@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class GamePageController implements Initializable {
 
-
+     // images for animation :)
     final Image onePicture = new Image(String.valueOf(this.getClass().getResource("../images/photo_2021-06-11_16-00-58.jpg")));
     final Image twoPicture = new Image(String.valueOf(this.getClass().getResource
             ("../images/photo_2021-06-11_16-00-53.jpg")));
@@ -28,6 +28,7 @@ public class GamePageController implements Initializable {
             ("../images/photo_2021-06-11_16-01-03.jpg")));
 
 
+    // imageView for 3 images to design our project
     private final ImageView pic1 = new ImageView(onePicture);
     private final ImageView pic2 = new ImageView(twoPicture);
     private final ImageView pic3 = new ImageView(threePicture);
@@ -75,6 +76,8 @@ public class GamePageController implements Initializable {
     }
 
     private void myAnimation(){
+
+        // set size of image view
         pic1.setFitWidth(100);
         pic1.setFitHeight(100);
         pic2.setFitWidth(100);
@@ -82,7 +85,9 @@ public class GamePageController implements Initializable {
         pic3.setFitWidth(100);
         pic3.setFitHeight(100);
 
+
         othello= new Group(pic1 , pic2 , pic3);
+
         Timeline t = new Timeline();
         t.setCycleCount(Timeline.INDEFINITE);
         t.getKeyFrames().add(new KeyFrame(

@@ -19,6 +19,8 @@ public class Cell extends Button {
         // set preHeight and preWidth
         setPrefHeight(500);
         setPrefWidth(500);
+
+        this.setStyle("-fx-border-color: green");
     }
 
 
