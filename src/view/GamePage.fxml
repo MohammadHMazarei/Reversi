@@ -9,7 +9,7 @@
 <AnchorPane fx:id="mainPage" prefHeight="835.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
    <children>
       <VBox fx:id="playGround" layoutX="130.0" layoutY="189.0" prefHeight="563.0" prefWidth="${playGround.height}" style="-fx-border-color: black;" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="133.0" AnchorPane.topAnchor="189.0" />
-      <HBox fx:id="hbX" layoutX="175.0" layoutY="57.0" prefHeight="100.0" prefWidth="582.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="151.0">
+      <HBox fx:id="hbX" alignment="CENTER" layoutX="175.0" layoutY="57.0" prefHeight="100.0" prefWidth="582.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="25.0">
          <children>
             <Label fx:id="label" prefHeight="21.0" prefWidth="485.0" />
          </children>
