@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="835.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
+<AnchorPane prefHeight="699.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
    <children>
-      <VBox fx:id="playGround" layoutX="116.0" layoutY="189.0" prefHeight="563.0" prefWidth="659.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="133.0" />
+      <VBox fx:id="playGround" layoutX="133.0" layoutY="136.0" prefHeight="${playGround.width}" prefWidth="${playGround.height}" style="-fx-border-color: black;" AnchorPane.bottomAnchor="135.79999999999995" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="115.79999999999995" AnchorPane.topAnchor="136.0" />
    </children>
 </AnchorPane>
