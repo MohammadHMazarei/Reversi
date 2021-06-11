@@ -38,12 +38,12 @@ public class GamePageController implements Initializable {
 
     @FXML
     private VBox playGround;
-
     @FXML
     private HBox hbX;
-    private Cell[][] thisCell;
     @FXML
     private Label label;
+
+    Cell[][] thisCell;
 
     private void labelW() {
         label.setTextAlignment(TextAlignment.CENTER);
@@ -60,16 +60,17 @@ public class GamePageController implements Initializable {
         myAnimation();
         hbX.getChildren().addAll(othello);
 
-
+        tableButtons();
     }
 
     //This function make 8*8 table that contain all buttons that we call each button cell
     private void setUpButtons(){
+        thisCell = new Cell[8][8];
         for (int i = 0; i < 8; i++) {
             HBox field = new HBox();
             for (int j = 0; j < 8; j++) {
-                Cell cell = new Cell(i , j);
-                field.getChildren().add(cell);
+                thisCell[i][j] = new Cell(i , j);
+                field.getChildren().add(thisCell[i][j]);
             }
             playGround.getChildren().add(field);
         }
@@ -114,6 +115,32 @@ public class GamePageController implements Initializable {
 
     }
 
+    private void tableButtons(){
+
+        thisCell[3][3].setStyle("-fx-background-color: black");
+        thisCell[3][3].setBlack(true);
+        thisCell[4][3].setStyle("-fx-background-color: white");
+        thisCell[3][4].setStyle("-fx-background-color: white");
+        thisCell[4][4].setStyle("-fx-background-color: black");
+        thisCell[4][4].setBlack(true);
+
+    }
+
+    private void moveInAllButtons(){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (thisCell[i][j].isBlack()){
+
+                }
+            }
+        }
+    }
+
+//    private boolean leftOfBlackCell(Cell cell , int x , int y){}
+
+    private void setColorOfButton(String color ,Cell cell){
+        cell.setStyle("-fx-background-color: " + color);
+    }
 
 
 }
