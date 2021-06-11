@@ -23,19 +23,13 @@ public class MainClass extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/GamePage.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            //
-        }
-        Parent root = loader.getRoot();
+
+        loader.load();
 
         // Add image to icon of primaryStage Which is in the photos folder (in src)!!
         Image icon = new Image("images/imgbin_circle-png.png");
 
-        Scene scene = new Scene(root);
-
-        primaryStage.setScene(scene);
+        primaryStage.setScene(new Scene(loader.getRoot()));
         primaryStage.getIcons().add(icon);
         primaryStage.show();
     }
