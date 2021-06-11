@@ -6,8 +6,10 @@ public class Cell extends Button {
     //This class Extends button , this is button our material to make a 8*8 table
     private int xPosition;
     private int yPosition;
+    private boolean isBlack;
 
     private boolean isSelected;
+    private boolean isSelectable;
 
 
     public Cell (int xPosition , int yPosition){
@@ -46,5 +48,21 @@ public class Cell extends Button {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+    }
+
+    public boolean isBlack() {
+        return isBlack;
+    }
+
+    public void setBlack(boolean black) {
+        isBlack = black;
+    }
+
+    public boolean isSelectable() {
+        return isSelectable;
+    }
+
+    public void setSelectable(boolean selectable) {
+        isSelectable = selectable;
     }
 }
