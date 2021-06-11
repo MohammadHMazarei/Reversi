@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="mainPage" prefHeight="835.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
+
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
    <children>
-      <VBox fx:id="playGround" layoutX="130.0" layoutY="189.0" prefHeight="563.0" prefWidth="${playGround.height}" style="-fx-border-color: black;" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="133.0" AnchorPane.topAnchor="189.0" />
-      <HBox fx:id="hbX" alignment="CENTER" layoutX="175.0" layoutY="57.0" prefHeight="100.0" prefWidth="582.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="25.0">
+      <ImageView fitHeight="835.0" fitWidth="908.0">
+         <image>
+            <Image url="@../images/backgrand2.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="mainPage" prefHeight="835.0" prefWidth="908.0">
          <children>
-            <Label fx:id="label" prefHeight="21.0" prefWidth="485.0" />
+            <VBox fx:id="playGround" layoutX="130.0" layoutY="189.0" prefHeight="563.0" prefWidth="${playGround.height}" style="-fx-border-color: black;" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="133.0" AnchorPane.topAnchor="189.0" />
+            <HBox fx:id="hbX" alignment="CENTER" layoutX="175.0" layoutY="57.0" prefHeight="100.0" prefWidth="582.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="25.0">
+               <children>
+                  <Label fx:id="label" prefHeight="21.0" prefWidth="485.0" />
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </AnchorPane>
    </children>
 </AnchorPane>
