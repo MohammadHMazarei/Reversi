@@ -53,14 +53,6 @@ public class GamePageController implements Initializable {
         label.setFont(Font.font("Algerian" , 80) );
 
 
-        Light.Distant light = new Light.Distant();
-        light.setAzimuth(20.0);
-        light.setElevation(45.0);
-
-        Lighting lighting = new Lighting();
-        lighting.setLight(light);
-        lighting.setSurfaceScale(6.0);
-        playGround.setEffect(lighting);
     }
 
     @Override
