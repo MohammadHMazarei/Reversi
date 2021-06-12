@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -50,6 +52,15 @@ public class GamePageController implements Initializable {
         label.setStyle("-fx-background-color: transparent");
         label.setFont(Font.font("Algerian" , 80) );
 
+
+        Light.Distant light = new Light.Distant();
+        light.setAzimuth(20.0);
+        light.setElevation(45.0);
+
+        Lighting lighting = new Lighting();
+        lighting.setLight(light);
+        lighting.setSurfaceScale(6.0);
+        playGround.setEffect(lighting);
     }
 
     @Override
@@ -149,8 +160,6 @@ public class GamePageController implements Initializable {
 
 
   private  boolean findBTN(int [] pos){
-
-
       for (int i = 0; i < 8; i++) {
 
           for (int j = 0; j < 8; j++) {
@@ -171,7 +180,21 @@ public class GamePageController implements Initializable {
 
   }
 
-  
+  private  void  checkBlackBTN(){
+
+        int [] index = new int[2];
+     boolean search  = findBTN(index);
+
+
+
+
+
+
+
+
+
+
+  }
 
 
 
