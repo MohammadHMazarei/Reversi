@@ -131,6 +131,9 @@ public class GamePageController implements Initializable {
             for (int j = 0; j < 8; j++) {
                 if (thisCell[i][j].isBlack()){
 
+
+
+
                 }
             }
         }
@@ -141,6 +144,37 @@ public class GamePageController implements Initializable {
     private void setColorOfButton(String color ,Cell cell){
         cell.setStyle("-fx-background-color: " + color);
     }
+
+
+
+
+  private  boolean findBTN(int [] pos){
+
+
+      for (int i = 0; i < 8; i++) {
+
+          for (int j = 0; j < 8; j++) {
+              if (thisCell[i][j].isBlack()){
+                  pos[0] = i;
+                  pos[1] = j;
+
+
+                  return true;
+              }
+
+
+          }
+
+      }
+
+      return false;
+
+  }
+
+  
+
+
+
 
 
 }
