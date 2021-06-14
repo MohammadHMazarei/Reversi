@@ -119,10 +119,14 @@ public class GamePageController implements Initializable {
 
         thisCell[3][3].setStyle("-fx-background-color: black");
         thisCell[3][3].setBlack(true);
+        thisCell[3][3].setColor("black");
         thisCell[4][3].setStyle("-fx-background-color: white");
+        thisCell[4][3].setColor("white");
         thisCell[3][4].setStyle("-fx-background-color: white");
+        thisCell[3][4].setColor("white");
         thisCell[4][4].setStyle("-fx-background-color: black");
         thisCell[4][4].setBlack(true);
+        thisCell[4][4].setColor("black");
 
     }
 
@@ -130,13 +134,47 @@ public class GamePageController implements Initializable {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (thisCell[i][j].isBlack()){
-
+                    if (rightOfBlackCell(thisCell , i , j))
                 }
             }
         }
     }
 
-//    private boolean leftOfBlackCell(Cell cell , int x , int y){}
+    private boolean rightOfBlackCell(Cell[][] cell , int x , int y){
+        if (x == 8)
+            return false;
+        else {
+            for (x = x +1; x < 8; x++) {
+                if (cell[x][y].getColor().equals("white")){
+                    rightCheckOfBlackCell(cell , x , y);
+                }
+                else if (cell[x][y].getColor().equals("black"))
+                    return false;
+                else
+                    return false;
+            }
+        }
+        return false;
+    }
+
+
+    private boolean rightCheckOfBlackCell(Cell[][] cells , int x , int y){
+        for (x = x + 1; x < 8; x++){
+            if (cells[x][y].getColor().equals("white"))
+                continue;
+            else if (cells[x][y].getColor().equals("black"))
+                return false;
+            else {
+                callSetOnActionButton(cells , x , y);
+            }
+        }
+        return false;
+    }
+
+
+
+
+    private void callSetOnActionButton(Cell[][] cells , int x , int y){}
 
     private void setColorOfButton(String color ,Cell cell){
         cell.setStyle("-fx-background-color: " + color);
