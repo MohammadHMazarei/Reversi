@@ -6,8 +6,10 @@ public class Cell extends Button {
     //This class Extends button , this is button our material to make a 8*8 table
     private int xPosition;
     private int yPosition;
-    private boolean isBlack;
 
+    private String color;
+
+    private boolean isBlack;
     private boolean isSelected;
     private boolean isSelectable;
 
@@ -64,5 +66,13 @@ public class Cell extends Button {
 
     public void setSelectable(boolean selectable) {
         isSelectable = selectable;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }
