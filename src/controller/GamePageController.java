@@ -20,6 +20,8 @@ import java.util.ResourceBundle;
 
 public class GamePageController implements Initializable {
 
+    static int xEnd , yEnd;
+
      // images for animation :)
     final Image onePicture = new Image(String.valueOf(this.getClass().getResource("../images/photo_2021-06-11_16-00-58.jpg")));
     final Image twoPicture = new Image(String.valueOf(this.getClass().getResource
@@ -61,6 +63,7 @@ public class GamePageController implements Initializable {
         hbX.getChildren().addAll(othello);
 
         tableButtons();
+        moveInAllButtons();
     }
 
     //This function make 8*8 table that contain all buttons that we call each button cell
@@ -115,6 +118,7 @@ public class GamePageController implements Initializable {
 
     }
 
+    //Prepare Primary Buttons
     private void tableButtons(){
 
         thisCell[3][3].setStyle("-fx-background-color: black");
@@ -130,13 +134,17 @@ public class GamePageController implements Initializable {
 
     }
 
+
     private void moveInAllButtons(){
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (thisCell[i][j].isBlack()){
                     if (rightOfBlackCell(thisCell , i , j))
+                        callSetOnActionButton(thisCell , i , j);
                 }
+                break;
             }
+            break;
         }
     }
 
@@ -146,7 +154,7 @@ public class GamePageController implements Initializable {
         else {
             for (x = x +1; x < 8; x++) {
                 if (cell[x][y].getColor().equals("white")){
-                    rightCheckOfBlackCell(cell , x , y);
+                    return rightCheckOfBlackCell(cell , x , y);
                 }
                 else if (cell[x][y].getColor().equals("black"))
                     return false;
@@ -160,12 +168,17 @@ public class GamePageController implements Initializable {
 
     private boolean rightCheckOfBlackCell(Cell[][] cells , int x , int y){
         for (x = x + 1; x < 8; x++){
-            if (cells[x][y].getColor().equals("white"))
-                continue;
-            else if (cells[x][y].getColor().equals("black"))
-                return false;
+            if (cells[x][y].getColor() != null) {
+                if (cells[x][y].getColor().equals("white"))
+                    continue;
+//                else if (cells[x][y].getColor().equals("black"))
+                else
+                    return false;
+            }
             else {
-                callSetOnActionButton(cells , x , y);
+                xEnd = x;
+                yEnd = y;
+                return true;
             }
         }
         return false;
@@ -174,7 +187,19 @@ public class GamePageController implements Initializable {
 
 
 
-    private void callSetOnActionButton(Cell[][] cells , int x , int y){}
+    private void callSetOnActionButton(Cell[][] cells , int xStart , int yStart){
+        cells[xEnd][yEnd].setStyle("-fx-background-color: #9e9e9e");
+        final int[] i = {xStart};
+        final int[] j = {yStart};
+        cells[xEnd][yEnd].setOnAction(e -> {
+            for (; i[0] <= xEnd; i[0]++){
+                for (; j[0] <= yEnd; j[0]++)
+                    cells[i[0]][j[0]].setColor("black");
+                    cells[i[0]][j[0]].setStyle("-fx-background-color: black");
+            }
+        });
+    }
+
 
     private void setColorOfButton(String color ,Cell cell){
         cell.setStyle("-fx-background-color: " + color);
