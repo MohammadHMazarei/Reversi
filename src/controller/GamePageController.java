@@ -137,6 +137,8 @@ public class GamePageController implements Initializable {
 
     private void moveInAllButtons(){
         for (int i = 0; i < 8; i++) {
+            if (i == 4)
+                break;
             for (int j = 0; j < 8; j++) {
                 if (thisCell[i][j].isBlack()){
                     if (rightOfBlackCell(thisCell , i , j)) {
@@ -145,17 +147,17 @@ public class GamePageController implements Initializable {
                         callSetOnActionButton(thisCell, i, j);
                     }
                 }
-                break;
+                if (j == 3)
+                    break;
             }
-            break;
         }
     }
 
     private boolean rightOfBlackCell(Cell[][] cell , int x , int y){
-        if (x == 8)
+        if (y == 8)
             return false;
         else {
-            for (x = x +1; x < 8; x++) {
+            for (y = y +1; y < 8; y++) {
                 if (cell[x][y].getColor().equals("white")){
                     return rightCheckOfBlackCell(cell , x , y);
                 }
@@ -170,7 +172,7 @@ public class GamePageController implements Initializable {
 
 
     private boolean rightCheckOfBlackCell(Cell[][] cells , int x , int y){
-        for (x = x + 1; x < 8; x++){
+        for (y = y + 1; y < 8; y++){
             if (cells[x][y].getColor() != null) {
                 if (cells[x][y].getColor().equals("white"))
                     continue;
@@ -195,10 +197,9 @@ public class GamePageController implements Initializable {
         final int[] i = {xStart};
         final int[] j = {yStart};
         cells[xEnd][yEnd].setOnAction(e -> {
-            for (; i[0] <= xEnd; i[0]++){
-                for (; j[0] <= yEnd; j[0]++)
-                    cells[i[0]][j[0]].setColor("black");
-                    cells[i[0]][j[0]].setStyle("-fx-background-color: black");
+            for (; j[0] <= yEnd; j[0]++){
+                cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
         });
     }
