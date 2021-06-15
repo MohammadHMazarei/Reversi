@@ -10,6 +10,7 @@ public class Cell extends Button {
     private String color;
 
     private boolean isBlack;
+    private  boolean isWhite;
     private boolean isSelected;
     private boolean isSelectable;
 
@@ -23,8 +24,12 @@ public class Cell extends Button {
         // set preHeight and preWidth
         setPrefHeight(500);
         setPrefWidth(500);
+        this.setColor("");
 
         this.setStyle("-fx-border-color: green");
+    }
+    public Cell(){
+
     }
 
 
@@ -74,5 +79,14 @@ public class Cell extends Button {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+
+    public boolean isWhite() {
+        return isWhite;
+    }
+
+    public void setWhite(boolean white) {
+        isWhite = white;
     }
 }
