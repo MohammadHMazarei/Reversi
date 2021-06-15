@@ -136,15 +136,19 @@ public class GamePageController implements Initializable {
         thisCell[3][3].setStyle("-fx-background-color: black");
         thisCell[3][3].setBlack(true);
         thisCell[3][3].setColor("black");
+        thisCell[3][3].setVisible(true);
         thisCell[4][3].setStyle("-fx-background-color: white");
         thisCell[4][3].setColor("white");
         thisCell[4][3].setWhite(true);
+        thisCell[4][3].setVisible(true);
         thisCell[3][4].setStyle("-fx-background-color: white");
         thisCell[3][4].setColor("white");
         thisCell[3][4].setWhite(true);
+        thisCell[3][4].setVisible(true);
         thisCell[4][4].setStyle("-fx-background-color: black");
         thisCell[4][4].setBlack(true);
         thisCell[4][4].setColor("black");
+        thisCell[4][4].setVisible(true);
 
 
 
@@ -558,23 +562,27 @@ public class GamePageController implements Initializable {
 
     private void callSetOnActionButton(Cell[][] cells , int xStart , int yStart){
         cells[xEndR][yEndR].setStyle("-fx-background-color: #9e9e9e");
+        cells[xEndR][yEndR].setVisible(true);
         final int[] i = {xStart};
         final int[] j = {yStart};
         cells[xEndR][yEndR].setOnAction(e -> {
 
             for (; j[0] <= yEndR; j[0]++){
                 cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setVisible(true);
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
         });
     }
     private void callSetOnActionButtonL(Cell[][] cells , int xStart , int yStart){
         cells[xEnd][yEnd].setStyle("-fx-background-color: #9e9e9e");
+        cells[xEnd][yEnd].setVisible(true);
         final int[] i = {xStart};
         final int[] j = {yStart};
         cells[xEnd][yEnd].setOnAction(e -> {
             for (; j[0] >= yEnd; j[0]--){
                 cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setVisible(true);
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
         });
@@ -582,12 +590,14 @@ public class GamePageController implements Initializable {
 
     private void callSetOnActionButtonU(Cell[][] cells , int xStart , int yStart){
         cells[xEndU][yEndU].setStyle("-fx-background-color: #9e9e9e");
+        cells[xEndU][yEndU].setVisible(true);
         final int[] i = {xStart};
         final int[] j = {yStart};
         cells[xEndU][yEndU].setOnAction(e -> {
 
             for (; i[0] >=xEndU; i[0]--){
                 cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setVisible(true);
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
         });
@@ -595,12 +605,14 @@ public class GamePageController implements Initializable {
 
     private void callSetOnActionButtonD(Cell[][] cells , int xStart , int yStart){
         cells[xEndD][yEndD].setStyle("-fx-background-color: #9e9e9e");
+        cells[xEndD][yEndD].setVisible(true);
         final int[] i = {xStart};
         final int[] j = {yStart};
         cells[xEndD][yEndD].setOnAction(e -> {
 
             for (; i[0] <=xEndD; i[0]++){
                 cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setVisible(true);
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
         });
@@ -620,12 +632,14 @@ public class GamePageController implements Initializable {
     }
     private void callSetOnActionButtonURD(Cell[][] cells , int xStart , int yStart){
         cells[xEndRD][yEndRD].setStyle("-fx-background-color: #9e9e9e");
+        cells[xEndRD][yEndRD].setVisible(true);
         final int[] i = {xStart};
         final int[] j = {yStart};
         cells[xEndRD][yEndRD].setOnAction(e -> {
 
             for (; i[0] <=xEndRD&&j[0]>=yEndRD; i[0]++ , j[0]--){
                 cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setVisible(true);
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
         });
@@ -633,12 +647,14 @@ public class GamePageController implements Initializable {
 
     private void callSetOnActionButtonRU(Cell[][] cells , int xStart , int yStart){
         cells[xEndRRU][yEndRRU].setStyle("-fx-background-color: #9e9e9e");
+        cells[xEndRRU][yEndRRU].setVisible(true);
         final int[] i = {xStart};
         final int[] j = {yStart};
         cells[xEndRRU][yEndRRU].setOnAction(e -> {
 
             for (; i[0] >=xEndRRU&&j[0]>=yEndRRU; i[0]-- , j[0]--){
                 cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setVisible(true);
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
         });
@@ -646,12 +662,14 @@ public class GamePageController implements Initializable {
 
     private void callSetOnActionButtonRD(Cell[][] cells , int xStart , int yStart){
         cells[xEndRRD][yEndRRD].setStyle("-fx-background-color: #9e9e9e");
+        cells[xEndRRD][yEndRRD].setVisible(true);
         final int[] i = {xStart};
         final int[] j = {yStart};
         cells[xEndRRD][yEndRRD].setOnAction(e -> {
 
             for (; i[0] <=xEndRRD&&j[0]<=yEndRRD; i[0]++ , j[0]++){
                 cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setVisible(true);
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
         });
