@@ -25,7 +25,8 @@ public class Cell extends Button {
         setPrefHeight(500);
         setPrefWidth(500);
         this.setColor("");
-        this.setVisible(false);
+
+
 
         this.setStyle("-fx-border-color: green");
     }
