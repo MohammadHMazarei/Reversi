@@ -84,10 +84,11 @@ public class GamePageController implements Initializable {
             HBox field = new HBox();
             for (int j = 0; j < 8; j++) {
                 thisCell[i][j] = new Cell(i , j);
-
+                field.setStyle("-fx-border-color: green");
                 field.getChildren().add(thisCell[i][j]);
             }
             playGround.getChildren().add(field);
+          
         }
     }
 
