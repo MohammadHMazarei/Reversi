@@ -175,18 +175,12 @@ public class GamePageController implements Initializable {
                 if (thisCell[i][j].isBlack()){
 
                     if (rightOfBlackCell(thisCell , i , j)) {
-
-
-
                         callSetOnActionButton(thisCell, i, j);
                     }
                     if (leftOfBlackCell(thisCell , i , j)){
-
-
                         callSetOnActionButtonL(thisCell , i , j);
                     }
                     if (UPOfBlackCell(thisCell , i , j)){
-
                         callSetOnActionButtonU(thisCell , i ,j);
                     }
                     if (DownOfBlackCell(thisCell , i , j )){
