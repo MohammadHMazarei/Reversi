@@ -28,6 +28,7 @@ public class GamePageController implements Initializable {
     static int xEndRU , yEndRU;
     static int xEndRD , yEndRD;
     static int xEndRRU , yEndRRU;
+    static int xEndRRD , yEndRRD;
     static boolean endOfGame = false;
      // images for animation :)
     final Image onePicture = new Image(String.valueOf(
@@ -141,7 +142,6 @@ public class GamePageController implements Initializable {
         thisCell[3][4].setStyle("-fx-background-color: white");
         thisCell[3][4].setColor("white");
         thisCell[3][4].setWhite(true);
-
         thisCell[4][4].setStyle("-fx-background-color: black");
         thisCell[4][4].setBlack(true);
         thisCell[4][4].setColor("black");
@@ -201,6 +201,12 @@ public class GamePageController implements Initializable {
 
                     if (RealRUOfBlackCell(thisCell , i , j)){
                         callSetOnActionButtonRU(thisCell , i , j);
+                    }
+
+                    if (RealRDOfBlackCell(thisCell , i ,j)){
+
+                        callSetOnActionButtonRD(thisCell , i , j);
+
                     }
                 }
 
@@ -335,6 +341,28 @@ public class GamePageController implements Initializable {
 
     }
 
+    private boolean RealRDOfBlackCell(Cell [][] cell , int x , int y){
+        if (x == 7 || y==7)
+            return false;
+        else {
+            y = y+1;
+            for (x = x +1; x <=8&&y<=8; x++ , y++) {
+
+
+
+                if (cell[x][y].getColor().equals("white")) {
+                    return RealRDCheckOfBlackCell(cell, x, y);
+                } else if (cell[x][y].getColor().equals("black"))
+                    return false;
+                else {
+                    return false;
+                }
+
+            }
+        }
+        return false;
+
+    }
 
     private boolean URealRDOfBlackCell(Cell [][] cell , int x , int y){
         if (x == 7 || y==7)
@@ -481,6 +509,28 @@ public class GamePageController implements Initializable {
         return false;
     }
 
+    private boolean RealRDCheckOfBlackCell(Cell[][] cells , int x , int y) {
+        y = y+1;
+        for (x = x + 1; x <=8&&y<=8; x++ , y++) {
+
+
+            if (!cells[x][y].getColor().equals("")) {
+                if (cells[x][y].getColor().equals("white"))
+                    continue;
+//                else if (cells[x][y].getColor().equals("black"))
+                else
+                    return false;
+            } else {
+                xEndRRD = x;
+                yEndRRD = y;
+                return true;
+            }
+
+
+        }
+        return false;
+    }
+
 
     private boolean URealRDCheckOfBlackCell(Cell[][] cells , int x , int y) {
         y = y-1;
@@ -593,6 +643,20 @@ public class GamePageController implements Initializable {
             }
         });
     }
+
+    private void callSetOnActionButtonRD(Cell[][] cells , int xStart , int yStart){
+        cells[xEndRRD][yEndRRD].setStyle("-fx-background-color: #9e9e9e");
+        final int[] i = {xStart};
+        final int[] j = {yStart};
+        cells[xEndRRD][yEndRRD].setOnAction(e -> {
+
+            for (; i[0] <=xEndRRD&&j[0]<=yEndRRD; i[0]++ , j[0]++){
+                cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setStyle("-fx-background-color: black");
+            }
+        });
+    }
+
 
     private void setColorOfButton(String color ,Cell cell){
         cell.setStyle("-fx-background-color: " + color);
