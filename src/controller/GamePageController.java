@@ -191,7 +191,7 @@ public class GamePageController implements Initializable {
                     }
                     if (DownOfBlackCell(thisCell , i , j )){
                         callSetOnActionButtonD(thisCell , i , j);
-                   
+
                     }
                 }
 
@@ -346,8 +346,8 @@ public class GamePageController implements Initializable {
                     return false;
             }
             else {
-                xEndU = x;
-                yEndU = y;
+                xEndD = x;
+                yEndD = y;
                 return true;
             }
         }
@@ -393,12 +393,12 @@ public class GamePageController implements Initializable {
     }
 
     private void callSetOnActionButtonD(Cell[][] cells , int xStart , int yStart){
-        cells[xEndU][yEndU].setStyle("-fx-background-color: #9e9e9e");
+        cells[xEndD][yEndD].setStyle("-fx-background-color: #9e9e9e");
         final int[] i = {xStart};
         final int[] j = {yStart};
-        cells[xEndU][yEndU].setOnAction(e -> {
+        cells[xEndD][yEndD].setOnAction(e -> {
 
-            for (; i[0] <=xEndU; i[0]++){
+            for (; i[0] <=xEndD; i[0]++){
                 cells[i[0]][j[0]].setColor("black");
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
