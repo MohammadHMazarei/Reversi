@@ -25,6 +25,7 @@ public class GamePageController implements Initializable {
     static int xEndR , yEndR;
     static int xEndU , yEndU;
     static int xEndD , yEndD;
+    static int xEndRU , yEndRU;
     static boolean endOfGame = false;
      // images for animation :)
     final Image onePicture = new Image(String.valueOf(
@@ -185,7 +186,9 @@ public class GamePageController implements Initializable {
                     }
                     if (DownOfBlackCell(thisCell , i , j )){
                         callSetOnActionButtonD(thisCell , i , j);
-
+                    }
+                    if (URealRUOfBlackCell(thisCell , i , j)){
+                        callSetOnActionButtonURU(thisCell , i , j);
                     }
                 }
 
@@ -274,6 +277,31 @@ public class GamePageController implements Initializable {
         return false;
 
     }
+    private boolean URealRUOfBlackCell(Cell [][] cell , int x , int y){
+        if (x == 7 || y==7)
+            return false;
+        else {
+             y = y+1;
+            for (x = x -1; x >=0&&y<=8; x-- , y++) {
+
+
+
+                    if (cell[x][y].getColor().equals("white")) {
+                        return URealRUCheckOfBlackCell(cell, x, y);
+                    } else if (cell[x][y].getColor().equals("black"))
+                        return false;
+                    else {
+                        return false;
+                    }
+
+            }
+        }
+        return false;
+
+    }
+
+    
+
 
     private boolean rightCheckOfBlackCell(Cell[][] cells , int x , int y){
         for (y = y + 1; y < 8; y++){
@@ -349,6 +377,28 @@ public class GamePageController implements Initializable {
     }
 
 
+    private boolean URealRUCheckOfBlackCell(Cell[][] cells , int x , int y) {
+        y = y+1;
+        for (x = x - 1; x >= 0&&y<=8; x-- , y++) {
+
+
+                if (!cells[x][y].getColor().equals("")) {
+                    if (cells[x][y].getColor().equals("white"))
+                        continue;
+//                else if (cells[x][y].getColor().equals("black"))
+                    else
+                        return false;
+                } else {
+                    xEndRU = x;
+                    yEndRU = y;
+                    return true;
+                }
+
+
+        }
+        return false;
+    }
+
     private void callSetOnActionButton(Cell[][] cells , int xStart , int yStart){
         cells[xEndR][yEndR].setStyle("-fx-background-color: #9e9e9e");
         final int[] i = {xStart};
@@ -393,6 +443,19 @@ public class GamePageController implements Initializable {
         cells[xEndD][yEndD].setOnAction(e -> {
 
             for (; i[0] <=xEndD; i[0]++){
+                cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setStyle("-fx-background-color: black");
+            }
+        });
+    }
+
+    private void callSetOnActionButtonURU(Cell[][] cells , int xStart , int yStart){
+        cells[xEndRU][yEndRU].setStyle("-fx-background-color: #9e9e9e");
+        final int[] i = {xStart};
+        final int[] j = {yStart};
+        cells[xEndRU][yEndRU].setOnAction(e -> {
+
+            for (; i[0] >=xEndRU&&j[0]<=yEndRU; i[0]-- , j[0]++){
                 cells[i[0]][j[0]].setColor("black");
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
