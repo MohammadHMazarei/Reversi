@@ -23,9 +23,12 @@ public class GamePageController implements Initializable {
     static int xEnd , yEnd;
 
     static int xEndR , yEndR;
+    static int xEndU , yEndU;
+    static int xEndD , yEndD;
     static boolean endOfGame = false;
      // images for animation :)
-    final Image onePicture = new Image(String.valueOf(this.getClass().getResource("../images/photo_2021-06-11_16-00-58.jpg")));
+    final Image onePicture = new Image(String.valueOf(
+            this.getClass().getResource("../images/photo_2021-06-11_16-00-58.jpg")));
     final Image twoPicture = new Image(String.valueOf(this.getClass().getResource
             ("../images/photo_2021-06-11_16-00-53.jpg")));
     final Image threePicture = new Image(String.valueOf(this.getClass().getResource
@@ -182,6 +185,14 @@ public class GamePageController implements Initializable {
 
                         callSetOnActionButtonL(thisCell , i , j);
                     }
+                    if (UPOfBlackCell(thisCell , i , j)){
+
+                        callSetOnActionButtonU(thisCell , i ,j);
+                    }
+                    if (DownOfBlackCell(thisCell , i , j )){
+                        callSetOnActionButtonD(thisCell , i , j);
+                   
+                    }
                 }
 
             }
@@ -232,6 +243,43 @@ public class GamePageController implements Initializable {
 
     }
 
+    // check Up of Black btn
+    private boolean UPOfBlackCell(Cell [][] cell , int x , int y){
+        if (x == 7)
+            return false;
+        else {
+            for (x = x -1; x >=0; x++) {
+                if (cell[x][y].getColor().equals("white")){
+                    return UPCheckOfBlackCell(cell , x , y);
+                }
+                else if (cell[x][y].getColor().equals("black"))
+                    return false;
+                else
+                    return false;
+            }
+        }
+        return false;
+
+    }
+
+
+    private boolean DownOfBlackCell(Cell [][] cell , int x , int y){
+        if (x == 7)
+            return false;
+        else {
+            for (x = x +1; x <=8; x++) {
+                if (cell[x][y].getColor().equals("white")){
+                    return DCheckOfBlackCell(cell , x , y);
+                }
+                else if (cell[x][y].getColor().equals("black"))
+                    return false;
+                else
+                    return false;
+            }
+        }
+        return false;
+
+    }
 
     private boolean rightCheckOfBlackCell(Cell[][] cells , int x , int y){
         for (y = y + 1; y < 8; y++){
@@ -269,6 +317,42 @@ public class GamePageController implements Initializable {
         return false;
     }
 
+    // for up off black btn
+    private boolean UPCheckOfBlackCell(Cell[][] cells , int x , int y){
+        for (x = x-1; x>=0 ; x--){
+            if (!cells[x][y].getColor().equals("")) {
+                if (cells[x][y].getColor().equals("white"))
+                    continue;
+//                else if (cells[x][y].getColor().equals("black"))
+                else
+                    return false;
+            }
+            else {
+                xEndU = x;
+                yEndU = y;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean DCheckOfBlackCell(Cell[][] cells , int x , int y){
+        for (x = x+1; x<=8 ; x++){
+            if (!cells[x][y].getColor().equals("")) {
+                if (cells[x][y].getColor().equals("white"))
+                    continue;
+//                else if (cells[x][y].getColor().equals("black"))
+                else
+                    return false;
+            }
+            else {
+                xEndU = x;
+                yEndU = y;
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     private void callSetOnActionButton(Cell[][] cells , int xStart , int yStart){
@@ -289,6 +373,32 @@ public class GamePageController implements Initializable {
         final int[] j = {yStart};
         cells[xEnd][yEnd].setOnAction(e -> {
             for (; j[0] >= yEnd; j[0]--){
+                cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setStyle("-fx-background-color: black");
+            }
+        });
+    }
+
+    private void callSetOnActionButtonU(Cell[][] cells , int xStart , int yStart){
+        cells[xEndU][yEndU].setStyle("-fx-background-color: #9e9e9e");
+        final int[] i = {xStart};
+        final int[] j = {yStart};
+        cells[xEndU][yEndU].setOnAction(e -> {
+
+            for (; i[0] >=xEndU; i[0]--){
+                cells[i[0]][j[0]].setColor("black");
+                cells[i[0]][j[0]].setStyle("-fx-background-color: black");
+            }
+        });
+    }
+
+    private void callSetOnActionButtonD(Cell[][] cells , int xStart , int yStart){
+        cells[xEndU][yEndU].setStyle("-fx-background-color: #9e9e9e");
+        final int[] i = {xStart};
+        final int[] j = {yStart};
+        cells[xEndU][yEndU].setOnAction(e -> {
+
+            for (; i[0] <=xEndU; i[0]++){
                 cells[i[0]][j[0]].setColor("black");
                 cells[i[0]][j[0]].setStyle("-fx-background-color: black");
             }
