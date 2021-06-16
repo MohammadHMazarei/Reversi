@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 public class GamePageController implements Initializable {
 
     static int xEnd , yEnd;
+
     static int xEndR , yEndR;
     static int xEndU , yEndU;
     static int xEndD , yEndD;
@@ -200,41 +201,45 @@ public class GamePageController implements Initializable {
             for (int j = 0; j < 8; j++) {
                 if (thisCell[i][j].isBlack()){
 
+                    if (rightOfBlackCell(thisCell , i , j , color)) {
+                        callSetOnActionButton(thisCell, i, j , color);
 
-                    boolean[] result = isGray(color , i ,j);
-
-                    if (result[0]){
-
-                        setGray(xEndR, yEndR);
-                    }
-
-                    if (result[1]){
-                        setGray(xEnd , yEnd);
-                    }
-
-                    if (result[2]){
-                        setGray(xEndU , yEndU);
 
                     }
+                    if (leftOfBlackCell(thisCell , i , j, color)){
+                        callSetOnActionButtonL(thisCell , i , j, color);
 
-                    if (result[3]){
-                        setGray(xEndD , yEndD);
+                    }
+                    if (UPOfBlackCell(thisCell , i , j , color)){
+                        callSetOnActionButtonU(thisCell , i ,j , color);
+
+                    }
+                    if (DownOfBlackCell(thisCell , i , j, color )){
+                        callSetOnActionButtonD(thisCell , i , j , color);
+
+                    }
+                    if (URealRUOfBlackCell(thisCell , i , j , color)){
+                        callSetOnActionButtonURU(thisCell , i , j , color);
+
                     }
 
-                    if (result[4]){
-                        setGray(xEndRU , yEndRU);
+                    if (URealRDOfBlackCell(thisCell , i ,j , color)){
+                        callSetOnActionButtonURD(thisCell , i , j , color);
+
+
                     }
 
-                    if (result[5]){
-                        setGray(xEndRD , yEndRD);
+                    if (RealRUOfBlackCell(thisCell , i , j , color)){
+                        callSetOnActionButtonRU(thisCell , i , j , color);
+
                     }
 
-                    if (result[6]){
+                    if (RealRDOfBlackCell(thisCell , i ,j , color)){
 
-                        setGray(xEndRRD , yEndRRD);
+                        callSetOnActionButtonRD(thisCell , i , j , color);
+
+
                     }
-
-
                 }
 
             }
@@ -242,29 +247,6 @@ public class GamePageController implements Initializable {
 
 
 
-
-    }
-
-    private  void  setGray(int x , int y){
-        thisCell[x][y].setColor("gray");
-        thisCell[x][y].setStyle("-fx-background-color: gray");
-    }
-
-
-    private boolean [] isGray(String []  color , int i , int j){
-
-        boolean[] result = new boolean[8];
-         result[0]=rightOfBlackCell(thisCell , i , j , color);
-         result[1]=leftOfBlackCell(thisCell , i , j, color);
-         result[2] =UPOfBlackCell(thisCell , i , j , color);
-         result[3]=DownOfBlackCell(thisCell , i , j, color );
-         result[4]=URealRUOfBlackCell(thisCell , i , j , color);
-         result[5] =URealRDOfBlackCell(thisCell , i ,j , color);
-         result[6]=RealRUOfBlackCell(thisCell , i , j , color);
-         result[7]=RealRDOfBlackCell(thisCell , i ,j , color);
-
-
-         return  result;
 
     }
 
@@ -313,7 +295,7 @@ public class GamePageController implements Initializable {
         if (x == 7)
             return false;
         else {
-            for (x = x -1; x >=0; x--) {
+            for (x = x -1; x >=0; x++) {
                 if (cell[x][y].getColor().equals(color[1])){
                     return UPCheckOfBlackCell(cell , x , y , color);
                 }
@@ -333,7 +315,7 @@ public class GamePageController implements Initializable {
             return false;
         else {
             for (x = x +1; x <=8; x++) {
-                if (cell[x][y].getColor().equals("white")){
+                if (cell[x][y].getColor().equals(color[1])){
                     return DCheckOfBlackCell(cell , x , y , color);
                 }
                 else if (cell[x][y].getColor().equals(color[0]))
@@ -513,7 +495,7 @@ public class GamePageController implements Initializable {
                     return true;
                 }
             }catch (Exception ignore){
-
+                
             }
         }
         return false;
