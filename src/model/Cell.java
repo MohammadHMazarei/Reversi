@@ -28,7 +28,7 @@ public class Cell extends Button {
 
 
 
-        this.setStyle("-fx-border-color: green");
+        this.setStyle("-fx-background-color: green");
     }
     public Cell(){
 
