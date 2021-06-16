@@ -295,7 +295,7 @@ public class GamePageController implements Initializable {
         if (x == 7)
             return false;
         else {
-            for (x = x -1; x >=0; x++) {
+            for (x = x -1; x >=0; x--) {
                 if (cell[x][y].getColor().equals(color[1])){
                     return UPCheckOfBlackCell(cell , x , y , color);
                 }
@@ -315,7 +315,7 @@ public class GamePageController implements Initializable {
             return false;
         else {
             for (x = x +1; x <=8; x++) {
-                if (cell[x][y].getColor().equals(color[1])){
+                if (cell[x][y].getColor().equals("white")){
                     return DCheckOfBlackCell(cell , x , y , color);
                 }
                 else if (cell[x][y].getColor().equals(color[0]))
@@ -495,7 +495,7 @@ public class GamePageController implements Initializable {
                     return true;
                 }
             }catch (Exception ignore){
-                
+
             }
         }
         return false;
