@@ -328,6 +328,16 @@ public class GamePageController implements Initializable {
                    thisCell[cell.getxPosition()][i].setStyle("-fx-background-color: "+color[0]);
                 }
 
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (thisCell[i][j].isSelectable()){
+                            thisCell[i][j].setSelectable(false);
+                            thisCell[i][j].setStyle("-fx-background-color: green");
+                        }
+                    }
+                }
+
+
                 if (turn.equals(Turn.BLACK)){
                     turn = Turn.WHITE;
                     color[0] ="white";
@@ -340,6 +350,8 @@ public class GamePageController implements Initializable {
                     color[1] ="white";
                     moveInAllButtons(color);
                 }
+
+
 
             }
 
