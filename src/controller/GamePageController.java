@@ -207,7 +207,7 @@ public class GamePageController implements Initializable {
 
             for (int j = 0; j < 8; j++) {
 
-                if (thisCell[i][j].isBlack()) {
+                if (thisCell[i][j].isBlack()&&turn.equals(Turn.BLACK)) {
                     boolean[] result = searchAllBTN(color, i, j);
 
                     if (result[0]) {
@@ -266,6 +266,7 @@ public class GamePageController implements Initializable {
                     }
 
                 }
+
             }
         }
 
@@ -274,11 +275,83 @@ public class GamePageController implements Initializable {
 
     }
 
+    private void mvm(String [] color ){
+
+        for (int i = 0; i < 8; i++) {
+
+            for (int j = 0; j < 8; j++) {
+
+
+                if (thisCell[i][j].isWhite()) {
+                    boolean[] result = searchAllBTN(color, i, j);
+                    if (result[0]) {
+                        thisCell[xEndR][yEndR].setColor("gray");
+                        thisCell[xEndR][yEndR].setStyle("-fx-background-color: gray");
+                        thisCell[xEndR][yEndR].setSelectable(true);
+
+                    }
+
+                    if (result[1]) {
+                        thisCell[xEnd][yEnd].setColor("gray");
+                        thisCell[xEnd][yEnd].setStyle("-fx-background-color: gray");
+                        thisCell[xEnd][yEnd].setSelectable(true);
+
+                    }
+
+                    if (result[2]) {
+                        thisCell[xEndU][yEndU].setColor("gray");
+                        thisCell[xEndU][yEndU].setStyle("-fx-background-color: gray");
+                        thisCell[xEndU][yEndU].setSelectable(true);
+                    }
+
+                    if (result[3]) {
+                        thisCell[xEndD][yEndD].setColor("gray");
+                        thisCell[xEndD][yEndD].setStyle("-fx-background-color: gray");
+                        thisCell[xEndD][yEndD].setSelectable(true);
+                    }
+
+
+                    if (result[4]) {
+                        thisCell[xEndRU][yEndRU].setColor("gray");
+                        thisCell[xEndRU][yEndRU].setStyle("-fx-background-color: gray");
+                        thisCell[xEndRU][yEndRU].setSelectable(true);
+
+
+                    }
+
+                    if (result[5]) {
+                        thisCell[xEndRD][yEndRD].setColor("gray");
+                        thisCell[xEndRD][yEndRD].setStyle("-fx-background-color: gray");
+                        thisCell[xEndRD][yEndRD].setSelectable(true);
+                    }
+
+
+                    if (result[6]) {
+                        thisCell[xEndRRU][yEndRRU].setColor("gray");
+                        thisCell[xEndRRU][yEndRRU].setStyle("-fx-background-color: gray");
+                        thisCell[xEndRRU][yEndRRU].setSelectable(true);
+                    }
+
+
+                    if (result[7]) {
+                        thisCell[xEndRRD][yEndRRD].setColor("gray");
+                        thisCell[xEndRRD][yEndRRD].setStyle("-fx-background-color: gray");
+                        thisCell[xEndRRD][yEndRRD].setSelectable(true);
+                    }
+
+                }
+            }
+
+            }
+    }
 
     private  void  coloredTheGrayBTN(String[] color){
 
-        moveInAllButtons(color);
-
+        if (turn.equals(Turn.BLACK)) {
+            moveInAllButtons(color);
+        }else {
+            mvm(color);
+        }
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -326,7 +399,12 @@ public class GamePageController implements Initializable {
                     thisCell[cell.getxPosition()][i].setColor(color[0]);
                    thisCell[cell.getxPosition()][i].setVisible(true);
                    thisCell[cell.getxPosition()][i].setStyle("-fx-background-color: "+color[0]);
+                   thisCell[cell.getxPosition()][i].setWhite(false);
+                    thisCell[cell.getxPosition()][i].setSelectable(false);
+                   thisCell[cell.getxPosition()][i].setWhite(false);
                 }
+
+
 
                 for (int i = 0; i < 8; i++) {
                     for (int j = 0; j < 8; j++) {
@@ -335,14 +413,16 @@ public class GamePageController implements Initializable {
                             thisCell[i][j].setStyle("-fx-background-color: green");
                         }
                     }
+
                 }
+
 
 
                 if (turn.equals(Turn.BLACK)){
                     turn = Turn.WHITE;
                     color[0] ="white";
                     color[1] ="black";
-                    moveInAllButtons(color);
+                    mvm(color);
                 }else {
 
                     turn = Turn.BLACK;
