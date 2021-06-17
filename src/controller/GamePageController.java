@@ -393,9 +393,16 @@ public class GamePageController implements Initializable {
                     thisCell[cell.getxPosition()][i].setColor(color[0]);
                    thisCell[cell.getxPosition()][i].setVisible(true);
                    thisCell[cell.getxPosition()][i].setStyle("-fx-background-color: "+color[0]);
-                   thisCell[cell.getxPosition()][i].setBlack(true);
-                    thisCell[cell.getxPosition()][i].setSelectable(false);
-                   thisCell[cell.getxPosition()][i].setWhite(false);
+                  if (turn.equals(Turn.BLACK)){
+                      thisCell[cell.getxPosition()][i].setBlack(true);
+                      thisCell[cell.getxPosition()][i].setSelectable(false);
+                      thisCell[cell.getxPosition()][i].setWhite(false);
+                  }else {
+
+                      thisCell[cell.getxPosition()][i].setBlack(false);
+                      thisCell[cell.getxPosition()][i].setSelectable(false);
+                      thisCell[cell.getxPosition()][i].setWhite(true);
+                  }
                 }
 
 
