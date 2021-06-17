@@ -172,11 +172,6 @@ public class GamePageController implements Initializable {
         thisCell[4][4].setVisible(true);
 
 
-        thisCell[3][5].setStyle("-fx-background-color: white");
-        thisCell[3][5].setWhite(true);
-        thisCell[3][5].setColor("white");
-        thisCell[3][5].setVisible(true);
-
 
     }
 
@@ -280,7 +275,6 @@ public class GamePageController implements Initializable {
         for (int i = 0; i < 8; i++) {
 
             for (int j = 0; j < 8; j++) {
-
 
                 if (thisCell[i][j].isWhite()) {
                     boolean[] result = searchAllBTN(color, i, j);
@@ -399,7 +393,7 @@ public class GamePageController implements Initializable {
                     thisCell[cell.getxPosition()][i].setColor(color[0]);
                    thisCell[cell.getxPosition()][i].setVisible(true);
                    thisCell[cell.getxPosition()][i].setStyle("-fx-background-color: "+color[0]);
-                   thisCell[cell.getxPosition()][i].setWhite(false);
+                   thisCell[cell.getxPosition()][i].setBlack(true);
                     thisCell[cell.getxPosition()][i].setSelectable(false);
                    thisCell[cell.getxPosition()][i].setWhite(false);
                 }
