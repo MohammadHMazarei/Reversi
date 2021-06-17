@@ -374,10 +374,13 @@ public class GamePageController implements Initializable {
         boolean [] result = new boolean[8];
 
         result[0] = rightOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
-
-
-
-
+        result[1] = leftOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
+        result[2] =  downOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
+        result[3] = UpOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
+        result[4] = RRUOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
+        result[5] = RRDOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
+        result[6] = URRUOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
+        result[7] = URRDOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
         return  result;
     }
 
@@ -388,6 +391,7 @@ public class GamePageController implements Initializable {
             boolean [] result = foundRange(thisCell[cell.getxPosition()][cell.getyPosition()] , color);
 
             if (result[0]){
+
 
                 for (int i = cell.getyPosition()  ; i<= yEndR; i++){
                     thisCell[cell.getxPosition()][i].setColor(color[0]);
@@ -412,6 +416,7 @@ public class GamePageController implements Initializable {
                         if (thisCell[i][j].isSelectable()){
                             thisCell[i][j].setSelectable(false);
                             thisCell[i][j].setStyle("-fx-background-color: green");
+                            thisCell[i][j].setColor("");
                         }
                     }
 
@@ -419,23 +424,278 @@ public class GamePageController implements Initializable {
 
 
 
-                if (turn.equals(Turn.BLACK)){
-                    turn = Turn.WHITE;
-                    color[0] ="white";
-                    color[1] ="black";
-                    mvm(color);
-                }else {
 
-                    turn = Turn.BLACK;
-                    color[0] ="black";
-                    color[1] ="white";
-                    moveInAllButtons(color);
+
+
+            }
+            if (result[1]){
+
+
+                for (int i = cell.getyPosition()  ; i>=yEnd  ;i -- ){
+                    thisCell[cell.getxPosition()][i].setColor(color[0]);
+                    thisCell[cell.getxPosition()][i].setVisible(true);
+                    thisCell[cell.getxPosition()][i].setStyle("-fx-background-color: "+color[0]);
+                    if (turn.equals(Turn.BLACK)){
+                        thisCell[cell.getxPosition()][i].setBlack(true);
+                        thisCell[cell.getxPosition()][i].setSelectable(false);
+                        thisCell[cell.getxPosition()][i].setWhite(false);
+                    }else {
+
+                        thisCell[cell.getxPosition()][i].setBlack(false);
+                        thisCell[cell.getxPosition()][i].setSelectable(false);
+                        thisCell[cell.getxPosition()][i].setWhite(true);
+                    }
+                }
+
+
+
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (thisCell[i][j].isSelectable()){
+                            thisCell[i][j].setSelectable(false);
+                            thisCell[i][j].setStyle("-fx-background-color: green");
+                            thisCell[i][j].setColor("");
+                        }
+                    }
+
                 }
 
 
 
             }
 
+
+            if (result[2]){
+
+                for (int i = cell.getxPosition()  ; i<=xEndD  ;i ++ ){
+                    thisCell[i][cell.getyPosition()].setColor(color[0]);
+                    thisCell[i][cell.getyPosition()].setVisible(true);
+                    thisCell[i][cell.getyPosition()].setStyle("-fx-background-color: "+color[0]);
+                    if (turn.equals(Turn.BLACK)){
+                        thisCell[i][cell.getyPosition()].setBlack(true);
+                        thisCell[i][cell.getyPosition()].setSelectable(false);
+                        thisCell[i][cell.getyPosition()].setWhite(false);
+                    }else {
+
+                        thisCell[i][cell.getyPosition()].setBlack(false);
+                        thisCell[i][cell.getyPosition()].setSelectable(false);
+                        thisCell[i][cell.getyPosition()].setWhite(true);
+                    }
+                }
+
+
+
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (thisCell[i][j].isSelectable()){
+                            thisCell[i][j].setSelectable(false);
+                            thisCell[i][j].setStyle("-fx-background-color: green");
+                            thisCell[i][j].setColor("");
+                        }
+                    }
+
+                }
+
+
+
+
+
+
+
+            }
+
+
+            if (result[3]){
+
+                for (int i = cell.getxPosition()  ; i>=xEndU  ;i -- ){
+                    thisCell[i][cell.getyPosition()].setColor(color[0]);
+                    thisCell[i][cell.getyPosition()].setVisible(true);
+                    thisCell[i][cell.getyPosition()].setStyle("-fx-background-color: "+color[0]);
+                    if (turn.equals(Turn.BLACK)){
+                        thisCell[i][cell.getyPosition()].setBlack(true);
+                        thisCell[i][cell.getyPosition()].setSelectable(false);
+                        thisCell[i][cell.getyPosition()].setWhite(false);
+                    }else {
+
+                        thisCell[i][cell.getyPosition()].setBlack(false);
+                        thisCell[i][cell.getyPosition()].setSelectable(false);
+                        thisCell[i][cell.getyPosition()].setWhite(true);
+                    }
+                }
+
+
+
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (thisCell[i][j].isSelectable()){
+                            thisCell[i][j].setSelectable(false);
+                            thisCell[i][j].setStyle("-fx-background-color: green");
+                            thisCell[i][j].setColor("");
+                        }
+                    }
+
+                }
+
+
+
+
+            }
+
+            if (result[4]){
+
+                for (int i = cell.getxPosition() , j = cell.getyPosition()  ; i>=xEndRRU &&j>=yEndRRU  ;i-- , j-- ){
+                    thisCell[i][j].setColor(color[0]);
+                    thisCell[i][j].setVisible(true);
+                    thisCell[i][j].setStyle("-fx-background-color: "+color[0]);
+                    if (turn.equals(Turn.BLACK)){
+                        thisCell[i][j].setBlack(true);
+                        thisCell[i][j].setSelectable(false);
+                        thisCell[i][j].setWhite(false);
+                    }else {
+
+                        thisCell[i][j].setBlack(false);
+                        thisCell[i][j].setSelectable(false);
+                        thisCell[i][j].setWhite(true);
+                    }
+                }
+
+
+
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (thisCell[i][j].isSelectable()){
+                            thisCell[i][j].setSelectable(false);
+                            thisCell[i][j].setStyle("-fx-background-color: green");
+                            thisCell[i][j].setColor("");
+                        }
+                    }
+
+                }
+
+
+
+
+
+
+            }
+
+            if (result[5]){
+                for (int i = cell.getxPosition() , j = cell.getyPosition()  ; i<=xEndRRD &&j<=yEndRRD  ;i ++, j++){
+                    thisCell[i][j].setColor(color[0]);
+                    thisCell[i][j].setVisible(true);
+                    thisCell[i][j].setStyle("-fx-background-color: "+color[0]);
+                    if (turn.equals(Turn.BLACK)){
+                        thisCell[i][j].setBlack(true);
+                        thisCell[i][j].setSelectable(false);
+                        thisCell[i][j].setWhite(false);
+                    }else {
+
+                        thisCell[i][j].setBlack(false);
+                        thisCell[i][j].setSelectable(false);
+                        thisCell[i][j].setWhite(true);
+                    }
+                }
+
+
+
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (thisCell[i][j].isSelectable()){
+                            thisCell[i][j].setSelectable(false);
+                            thisCell[i][j].setStyle("-fx-background-color: green");
+                            thisCell[i][j].setColor("");
+                        }
+                    }
+
+                }
+
+
+
+            }
+            if (result[6]){
+                for (int i = cell.getxPosition() , j = cell.getyPosition()  ; i>=xEndRU &&j<=yEndRU  ;i --, j++){
+                    thisCell[i][j].setColor(color[0]);
+                    thisCell[i][j].setVisible(true);
+                    thisCell[i][j].setStyle("-fx-background-color: "+color[0]);
+                    if (turn.equals(Turn.BLACK)){
+                        thisCell[i][j].setBlack(true);
+                        thisCell[i][j].setSelectable(false);
+                        thisCell[i][j].setWhite(false);
+                    }else {
+
+                        thisCell[i][j].setBlack(false);
+                        thisCell[i][j].setSelectable(false);
+                        thisCell[i][j].setWhite(true);
+                    }
+                }
+
+
+
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (thisCell[i][j].isSelectable()){
+                            thisCell[i][j].setSelectable(false);
+                            thisCell[i][j].setStyle("-fx-background-color: green");
+                            thisCell[i][j].setColor("");
+                        }
+                    }
+
+                }
+
+
+
+            }
+
+            if (result[7]){
+
+                for (int i = cell.getxPosition() , j = cell.getyPosition()  ; i<=xEndRD &&j>=yEndRD  ;i ++, j--){
+                    thisCell[i][j].setColor(color[0]);
+                    thisCell[i][j].setVisible(true);
+                    thisCell[i][j].setStyle("-fx-background-color: "+color[0]);
+                    if (turn.equals(Turn.BLACK)){
+                        thisCell[i][j].setBlack(true);
+                        thisCell[i][j].setSelectable(false);
+                        thisCell[i][j].setWhite(false);
+                    }else {
+
+                        thisCell[i][j].setBlack(false);
+                        thisCell[i][j].setSelectable(false);
+                        thisCell[i][j].setWhite(true);
+                    }
+                }
+
+
+
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (thisCell[i][j].isSelectable()){
+                            thisCell[i][j].setSelectable(false);
+                            thisCell[i][j].setStyle("-fx-background-color: green");
+                            thisCell[i][j].setColor("");
+                        }
+                    }
+
+                }
+
+
+
+            }
+
+
+            if (turn.equals(Turn.BLACK)){
+                turn = Turn.WHITE;
+                color[0] ="white";
+                color[1] ="black";
+                mvm(color);
+                coloredTheGrayBTN(color);
+            }else {
+
+                turn = Turn.BLACK;
+                color[0] = "black";
+                color[1] = "white";
+                moveInAllButtons(color);
+                coloredTheGrayBTN(color);
+            }
 
 
         });
@@ -484,18 +744,148 @@ public class GamePageController implements Initializable {
     }
 
     private boolean rightOfBlackCellGRA(Cell[][] cell , int x , int y, String[] color) {
+         try {
+             if (cell[x][y + 1].getColor().equals(color[1])) {
 
-            if (cell[x][y+1].getColor().equals(color[1])) {
-                return rightCheckOfBlackCellGR(cell, x, y+1, color);
-            } else if (cell[x][y].getColor().equals(color[0]))
-                return false;
+                 return rightCheckOfBlackCellGR(cell, x, y + 1, color);
+             } else if (cell[x][y].getColor().equals(color[0])) {
 
+                 return false;
 
+             }
 
+         }catch (Exception e){
+
+         }
        return  false;
     }
+    private boolean leftOfBlackCellGRA(Cell[][] cell , int x , int y, String[] color) {
+            try {
 
 
+                if (cell[x][y - 1].getColor().equals(color[1])) {
+
+                    return leftCheckOfBlackCellGR(cell, x, y - 1, color);
+                } else if (cell[x][y].getColor().equals(color[0])) {
+
+                    return false;
+
+                }
+            }catch (Exception e){
+
+            }
+        return  false;
+    }
+
+    private boolean downOfBlackCellGRA(Cell[][] cell , int x , int y, String[] color) {
+        try {
+
+
+            if (cell[x + 1][y].getColor().equals(color[1])) {
+
+                return downCheckOfBlackCellGR(cell, x + 1, y, color);
+            } else if (cell[x][y].getColor().equals(color[0])) {
+
+                return false;
+
+            }
+        }catch (Exception e){
+
+        }
+        return  false;
+    }
+
+    //******************
+    private boolean RRUOfBlackCellGRA(Cell[][] cell , int x , int y, String[] color) {
+        try {
+                    //  y = y-1;
+            //            for (x = x -1; x >=0&&y>=0; x-- , y--)
+
+            if (cell[x - 1][y-1].getColor().equals(color[1])) {
+
+                return RRUCheckOfBlackCellGR(cell, x - 1, y-1, color);
+            } else if (cell[x][y].getColor().equals(color[0])) {
+
+                return false;
+
+            }
+        }catch (Exception e){
+
+        }
+        return  false;
+    }
+
+    //x = x - 1; x >= 0&&y<=8; x-- , y++
+    private boolean URRUOfBlackCellGRA(Cell[][] cell , int x , int y, String[] color) {
+        try {
+
+            if (cell[x - 1][y+1].getColor().equals(color[1])) {
+
+                return URRUCheckOfBlackCellGR(cell, x - 1, y+1, color);
+            } else if (cell[x][y].getColor().equals(color[0])) {
+
+                return false;
+
+            }
+        }catch (Exception e){
+
+        }
+        return  false;
+    }
+//x = x + 1; x <=8&&y>=0; x++ , y--
+    private boolean URRDOfBlackCellGRA(Cell[][] cell , int x , int y, String[] color) {
+        try {
+
+            if (cell[x +1][y-1].getColor().equals(color[1])) {
+
+                return URRDCheckOfBlackCellGR(cell, x + 1, y-1, color);
+            } else if (cell[x][y].getColor().equals(color[0])) {
+
+                return false;
+
+            }
+        }catch (Exception e){
+
+        }
+        return  false;
+    }
+
+    private boolean RRDOfBlackCellGRA(Cell[][] cell , int x , int y, String[] color) {
+        try {
+            //  y = y-1;
+            //            for (x = x -1; x >=0&&y>=0; x-- , y--)
+
+            if (cell[x +1][y+1].getColor().equals(color[1])) {
+
+                return RRDCheckOfBlackCellGR(cell, x + 1, y+1, color);
+            } else if (cell[x][y].getColor().equals(color[0])) {
+
+                return false;
+
+            }
+        }catch (Exception e){
+
+        }
+        return  false;
+    }
+    private boolean UpOfBlackCellGRA(Cell[][] cell , int x , int y, String[] color) {
+
+        try {
+
+            if (cell[x - 1][y].getColor().equals(color[1])) {
+
+                return UpCheckOfBlackCellGR(cell, x - 1, y, color);
+            } else if (cell[x][y].getColor().equals(color[0])) {
+
+                return false;
+
+            }
+        }catch (Exception e){
+
+        }
+
+        return  false;
+    }
     private boolean leftOfBlackCell(Cell [][] cell , int x , int y  , String [] color){
         if (y == 7)
         return false;
@@ -666,8 +1056,146 @@ public class GamePageController implements Initializable {
         return false;
     }
 
+    private boolean leftCheckOfBlackCellGR(Cell[][] cells , int x , int y , String [] color) {
+        for (y = y - 1; y >=0; y--) {
+
+            if (cells[x][y].getColor().equals(color[1]))
+                continue;
+//
+            else if (cells[x][y].getColor().equals(color[0])) {
+                xEnd = x;
+                yEnd = y;
+                return true;
+
+            }
 
 
+
+        }
+
+        return false;
+    }
+    private boolean downCheckOfBlackCellGR(Cell[][] cells , int x , int y , String [] color) {
+        for (x =x+1 ; x<8; x++) {
+
+            if (cells[x][y].getColor().equals(color[1]))
+                continue;
+//
+            else if (cells[x][y].getColor().equals(color[0])) {
+                xEndD = x;
+                yEndD = y;
+                return true;
+
+            }
+
+
+
+        }
+
+        return false;
+    }
+
+    // y = y-1;
+    //            //            for (x = x -1; x >=0&&y>=0; x-- , y--)
+    private boolean RRUCheckOfBlackCellGR(Cell[][] cells , int x , int y , String [] color) {
+        for (x =x-1 , y = y-1; x>=0 && y>=0; x-- , y--) {
+
+            if (cells[x][y].getColor().equals(color[1]))
+                continue;
+//
+            else if (cells[x][y].getColor().equals(color[0])) {
+                xEndRRU = x;
+                yEndRRU = y;
+                return true;
+
+            }
+
+
+
+        }
+
+        return false;
+    }
+    private boolean URRUCheckOfBlackCellGR(Cell[][] cells , int x , int y , String [] color) {
+        for (x =x-1 , y = y+1; x>=0 && y<=8; x-- , y++) {
+
+            if (cells[x][y].getColor().equals(color[1]))
+                continue;
+//
+            else if (cells[x][y].getColor().equals(color[0])) {
+                xEndRU = x;
+                yEndRU = y;
+                return true;
+
+            }
+
+
+
+        }
+
+        return false;
+    }
+
+    private boolean URRDCheckOfBlackCellGR(Cell[][] cells , int x , int y , String [] color) {
+        for (x =x+1 , y = y-1; x<=8 && y>=0; x++ , y--) {
+
+            if (cells[x][y].getColor().equals(color[1]))
+                continue;
+//
+            else if (cells[x][y].getColor().equals(color[0])) {
+                xEndRD = x;
+                yEndRD = y;
+                return true;
+
+            }
+
+
+
+        }
+
+        return false;
+    }
+
+
+    private boolean RRDCheckOfBlackCellGR(Cell[][] cells , int x , int y , String [] color) {
+        for (x =x+1 , y = y+1; x>=0 && y>=0; x++ , y++) {
+
+            if (cells[x][y].getColor().equals(color[1]))
+                continue;
+//
+            else if (cells[x][y].getColor().equals(color[0])) {
+                xEndRRD = x;
+                yEndRRD = y;
+                return true;
+
+            }
+
+
+
+        }
+
+        return false;
+    }
+
+    private boolean UpCheckOfBlackCellGR(Cell[][] cells , int x , int y , String [] color) {
+        for (x =x-1 ; x>=0; x--) {
+
+            if (cells[x][y].getColor().equals(color[1]))
+                continue;
+//
+            else if (cells[x][y].getColor().equals(color[0])) {
+                xEndU = x;
+                yEndU = y;
+                return true;
+
+            }
+
+
+
+        }
+
+        return false;
+    }
     private boolean rightCheckOfBlackCell(Cell[][] cells , int x , int y , String [] color){
         for (y = y + 1; y < 8; y++){
             if (!cells[x][y].getColor().equals("")) {
