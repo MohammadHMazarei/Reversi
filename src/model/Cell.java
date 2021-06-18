@@ -1,22 +1,23 @@
 package model;
 
+import com.jfoenix.controls.JFXButton;
+import controller.Color;
 import javafx.scene.control.Button;
 
-public class Cell extends Button {
+public class Cell extends JFXButton {
     //This class Extends button , this is button our material to make a 8*8 table
     private int xPosition;
     private int yPosition;
 
-    private String color;
-
+    private  Color color;
     private boolean isBlack;
     private  boolean isWhite;
-    private boolean isSelected;
     private boolean isSelectable;
 
 
     public Cell (int xPosition , int yPosition){
         super(" ");
+
 
         this.xPosition = xPosition;
         this.yPosition = yPosition;
@@ -24,16 +25,31 @@ public class Cell extends Button {
         // set preHeight and preWidth
         setPrefHeight(500);
         setPrefWidth(500);
-        this.setColor("");
-
-
-
+        this.setColor(Color.GREEN);
         this.setStyle("-fx-background-color: green");
     }
     public Cell(){
 
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+
+        if (color.equals(Color.BLACK)){
+            this.setStyle("-fx-background-color: black");
+        }else if (color.equals(Color.WHITE)){
+            this.setStyle("-fx-background-color: white");
+        }else if (color.equals(Color.GRAY)){
+            this.setStyle("-fx-background-color: gray");
+        }else if (color.equals(Color.GREEN)){
+            this.setStyle("-fx-background-color: green");
+        }
+
+    }
 
     public int getxPosition() {
         return xPosition;
@@ -51,13 +67,7 @@ public class Cell extends Button {
         this.yPosition = yPosition;
     }
 
-    public boolean isSelected() {
-        return isSelected;
-    }
 
-    public void setSelected(boolean selected) {
-        isSelected = selected;
-    }
 
     public boolean isBlack() {
         return isBlack;
@@ -75,13 +85,6 @@ public class Cell extends Button {
         isSelectable = selectable;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
 
 
     public boolean isWhite() {
