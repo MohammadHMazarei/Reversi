@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import java.io.IOException;
 public class StartPageController {
 
     @FXML
-   private Button startBTN;
+   private JFXButton startBTN;
 
 
 
