@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
@@ -64,7 +65,11 @@ public class GamePageController implements Initializable {
    // --------------------------------------------------------
     public static Group othello;
 
+     @FXML
+     private Label pointOfWhite;
 
+     @FXML
+     private Label pointOfBlack;
     @FXML
     private VBox playGround;
     @FXML
@@ -99,6 +104,14 @@ public class GamePageController implements Initializable {
     @FXML
     private MediaView mediaView;
 
+    @FXML
+    private Circle redW;
+
+    @FXML
+    private Circle redB;
+
+
+
 
     static MediaPlayer mediaPlayer;
 
@@ -112,6 +125,7 @@ public class GamePageController implements Initializable {
         }
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
 
     }
@@ -198,10 +212,15 @@ public class GamePageController implements Initializable {
         Color[] color1  = new Color[2];
         color1[0] = Color.WHITE;
         color1[1] = Color.BLACK;
+        this.pointOfWhite.setText("2");
+
             if (turn.equals(Turn.WHITE)) {
-                moveInAllButtons(color1);
+               coloredTheGrayBTN(color1);
             }else {
                 coloredTheGrayBTN(color);
+                redB.setVisible(true);
+                redW.setVisible(false);
+                this.pointOfBlack.setText(String.valueOf(numOfButton(Color.BLACK)));
             }
 
 
@@ -400,6 +419,16 @@ public class GamePageController implements Initializable {
         }
 
 
+           pointOfWhite.setText(String.valueOf(numOfButton(Color.WHITE)));
+           pointOfBlack.setText(String.valueOf(numOfButton(Color.BLACK)));
+           if (turn.equals(Turn.WHITE)){
+               redW.setVisible(true);
+               redB.setVisible(false);
+           }else if (turn.equals(Turn.BLACK)){
+               redW.setVisible(false);
+               redB.setVisible(true);
+           }
+
 
     }
 
@@ -433,6 +462,24 @@ public class GamePageController implements Initializable {
 
 
     }
+
+    private  int numOfButton(Color color){
+        int count =0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+
+                if (thisCell[i][j].getColor().equals(color)){
+                    ++count;
+                }
+
+            }
+        }
+
+
+
+        return count;
+    }
+
     private  void  onActionForGrayBTN(Cell cell , Color [] color){
 
             cell.setOnAction(event -> {
