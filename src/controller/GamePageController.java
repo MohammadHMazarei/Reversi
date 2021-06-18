@@ -5,7 +5,6 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,8 +14,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 import model.Cell;
-
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
