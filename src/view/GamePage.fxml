@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.media.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="mainPage" prefHeight="835.0" prefWidth="908.0" styleClass="an-m" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
+<AnchorPane fx:id="mainPage" prefHeight="842.0" prefWidth="978.0" styleClass="an-m" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
    <children>
       <VBox fx:id="playGround" layoutX="130.0" layoutY="189.0" prefHeight="563.0" prefWidth="${playGround.height}" style="-fx-border-color: green;" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="133.0" AnchorPane.topAnchor="189.0" />
       <HBox fx:id="hbX" alignment="CENTER" layoutX="175.0" layoutY="57.0" prefHeight="100.0" prefWidth="582.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="44.0">
@@ -40,5 +42,49 @@
         </menus>
       </MenuBar>
       <MediaView fx:id="mediaView" fitHeight="100.0" fitWidth="100.0" layoutX="7.0" layoutY="30.0" />
+      <VBox alignment="CENTER" layoutX="794.0" layoutY="317.0" prefHeight="270.0" prefWidth="108.0" spacing="25.0" AnchorPane.bottomAnchor="255.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="317.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="143.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <Circle fx:id="whiteCir" fill="WHITE" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Circle fx:id="redW" fill="RED" radius="11.0" stroke="RED" strokeType="INSIDE" />
+                        <Label prefHeight="21.0" prefWidth="68.0" text="White : ">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="pointOfWhite" prefHeight="21.0" prefWidth="29.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="143.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <Circle fx:id="blackCir" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Circle fx:id="redB" fill="RED" radius="11.0" stroke="RED" strokeType="INSIDE" />
+                        <Label prefHeight="21.0" prefWidth="67.0" text="Black :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="pointOfBlack" prefHeight="21.0" prefWidth="30.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
