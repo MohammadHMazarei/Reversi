@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.media.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -9,10 +10,35 @@
 <AnchorPane fx:id="mainPage" prefHeight="835.0" prefWidth="908.0" styleClass="an-m" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GamePageController">
    <children>
       <VBox fx:id="playGround" layoutX="130.0" layoutY="189.0" prefHeight="563.0" prefWidth="${playGround.height}" style="-fx-border-color: green;" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="133.0" AnchorPane.topAnchor="189.0" />
-      <HBox fx:id="hbX" alignment="CENTER" layoutX="175.0" layoutY="57.0" prefHeight="100.0" prefWidth="582.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="25.0">
+      <HBox fx:id="hbX" alignment="CENTER" layoutX="175.0" layoutY="57.0" prefHeight="100.0" prefWidth="582.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="44.0">
          <children>
             <Label fx:id="label" prefHeight="21.0" prefWidth="485.0" />
          </children>
       </HBox>
+      <MenuBar fx:id="menuBar" layoutY="-2.0" onMouseEntered="#ml" onMouseExited="#mE" prefHeight="32.0" prefWidth="908.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Stting">
+            <items>
+                  <Menu mnemonicParsing="false" text="Musics">
+                    <items>
+                      <MenuItem fx:id="Music1" mnemonicParsing="false" onAction="#plyMusicOne" text="Music1" />
+                        <MenuItem fx:id="Music2" mnemonicParsing="false" onAction="#playMusicTwo" text="Music2" />
+                        <MenuItem fx:id="Music3" mnemonicParsing="false" onAction="#playMusic3" text="Music3" />
+                        <MenuItem fx:id="stop" mnemonicParsing="false" onAction="#stopF" text="Stop" />
+                    </items>
+                  </Menu>
+                  <MenuItem fx:id="scoreboard" mnemonicParsing="false" text="Scoreboard" />
+                  <MenuItem fx:id="exit" mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="about" mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="gameGuide" mnemonicParsing="false" text="Game guide" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <MediaView fx:id="mediaView" fitHeight="100.0" fitWidth="100.0" layoutX="7.0" layoutY="30.0" />
    </children>
 </AnchorPane>
