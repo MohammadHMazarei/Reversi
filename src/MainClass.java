@@ -40,6 +40,7 @@ public class MainClass extends Application {
 
         primaryStage.getIcons().add(icon);
         primaryStage.setTitle("Othello ~Designed by : SaraNikMehr & MohammadHMazarei~");
+        primaryStage.resizableProperty().setValue(Boolean.FALSE);
         primaryStage.show();
     }
 
