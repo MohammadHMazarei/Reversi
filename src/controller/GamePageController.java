@@ -4,8 +4,10 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -20,11 +22,11 @@ import javafx.scene.media.MediaView;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Cell;
 
-import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -66,55 +68,26 @@ public class GamePageController implements Initializable {
     public static Group othello;
 
      @FXML
-     private Label pointOfWhite;
+     private Label pointOfWhite , pointOfBlack, label;;
 
-     @FXML
-     private Label pointOfBlack;
     @FXML
     private VBox playGround;
     @FXML
     private HBox hbX;
-    @FXML
-    private Label label;
-    @FXML
-    private MenuItem gameGuide;
 
     @FXML
-    private MenuItem exit;
+    private MenuItem gameGuide ,exit , Music3 , Music2,stop ,Music1, about,scoreboard;
 
      @FXML
      private MenuBar menuBar;
-    @FXML
-    private MenuItem Music3;
-
-    @FXML
-    private MenuItem Music2;
-    @FXML
-    private MenuItem stop;
-
-    @FXML
-    private MenuItem Music1;
-
-    @FXML
-    private MenuItem about;
-
-    @FXML
-    private MenuItem scoreboard;
 
     @FXML
     private MediaView mediaView;
 
     @FXML
-    private Circle redW;
-
-    @FXML
-    private Circle redB;
-
-
-
+    private Circle redW , redB;
 
     static MediaPlayer mediaPlayer;
-
 
     @FXML
     private  void plyMusicOne(ActionEvent event){
@@ -130,61 +103,49 @@ public class GamePageController implements Initializable {
 
     }
     @FXML
-    private void ml(MouseEvent event){
-
-        menuBar.setStyle("-fx-background-color: gray");
-
-    }
-
+    private void ml(MouseEvent event){menuBar.setStyle("-fx-background-color: gray");}
     @FXML
-    private void mE(MouseEvent event){
-
-        menuBar.setStyle("-fx-background-color:#cccccc ");
-
-    }
-
+    private void mE(MouseEvent event){menuBar.setStyle("-fx-background-color:#cccccc ");}
 
     @FXML
     private  void playMusicTwo(ActionEvent event){
-
-
         Media media = new Media(
                 "file:/C:/Users/NP/Desktop/Epilogue_The_Legend_of_Zelda_Breath_of_the_Wild_OST_.hd_.mp3");
-        if (mediaPlayer!=null){
-            mediaPlayer.stop();
-        }
+        if (mediaPlayer!=null){mediaPlayer.stop();}
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
-
-
 
     }
 
     @FXML
     private  void playMusic3(){
-
         Media media = new Media(
                 "file:/C:/Users/NP/Desktop/Moon_Beach_Streets_of_Rage_1_Original_Soundtrack_OST_.hd_.mp3");
-        if (mediaPlayer!=null){
-            mediaPlayer.stop();
-        }
+        if (mediaPlayer!=null){mediaPlayer.stop();}
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
 
-
-
     }
 
     @FXML
-    private void stopF(ActionEvent event){
+    private void aboutA(ActionEvent event) throws IOException {
 
-        if (mediaPlayer!=null){
-            mediaPlayer.stop();
-        }
-
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("../view/About.fxml"));
+        fxmlLoader.load();
+        Scene scene = new Scene(fxmlLoader.getRoot());
+        Stage stage = new Stage();
+        Image icon  = new Image("images/imgbin_circle-png.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Othello ~Designed by : SaraNikMehr & MohammadHMazarei~");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
+
+    @FXML
+    private void stopF(ActionEvent event){if (mediaPlayer!=null){mediaPlayer.stop();}}
 
     static Cell[][] thisCell;
 
@@ -192,7 +153,6 @@ public class GamePageController implements Initializable {
         label.setTextAlignment(TextAlignment.CENTER);
         label.setStyle("-fx-background-color: transparent");
         label.setFont(Font.font("Algerian" , 80) );
-
     }
 
     @Override
@@ -214,17 +174,13 @@ public class GamePageController implements Initializable {
         color1[1] = Color.BLACK;
         this.pointOfWhite.setText("2");
 
-            if (turn.equals(Turn.WHITE)) {
-               coloredTheGrayBTN(color1);
-            }else {
+            if (turn.equals(Turn.WHITE)) {coloredTheGrayBTN(color1);}
+            else {
                 coloredTheGrayBTN(color);
                 redB.setVisible(true);
                 redW.setVisible(false);
                 this.pointOfBlack.setText(String.valueOf(numOfButton(Color.BLACK)));
             }
-
-
-
 
     }
 
@@ -399,21 +355,16 @@ public class GamePageController implements Initializable {
 
     private  void  coloredTheGrayBTN(Color[] color){
 
-        if (turn.equals(Turn.BLACK)) {
-            moveInAllButtons(color);
-        }else {
+        if (turn.equals(Turn.BLACK)) {moveInAllButtons(color);}
+        else
+        {
             mvm(color);
         }
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
-
                 if (thisCell[i][j].isSelectable() && thisCell[i][j].getColor().equals(Color.GRAY)){
-
-
-                        onActionForGrayBTN(thisCell[i][j] , color);
-
-                }
+                    onActionForGrayBTN(thisCell[i][j] , color);}
 
             }
         }
