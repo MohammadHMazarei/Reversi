@@ -5,3 +5,8 @@
 .an-s{
     -fx-background-image: url('../images/682322.jpg')
 }
+
+.button{
+    -fx-background-color: green;
+    -fx-border-color: black;
+}
