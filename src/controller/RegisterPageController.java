@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,6 +39,10 @@ public class RegisterPageController implements Initializable {
     private void onActions(){
         registerBTN.setOnAction(e -> {});
 
-        cancelBTN.setOnAction(e -> {});
+        cancelBTN.setOnAction(e -> {
+            ((Stage)cancelBTN.getScene().getWindow()).close();
+
+            LoginPageController.registerStage = null;
+        });
     }
 }
