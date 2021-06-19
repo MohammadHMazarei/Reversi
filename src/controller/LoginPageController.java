@@ -1,4 +1,4 @@
 package controller;
 
-public class LoginPage {
+public class LoginPageController {
 }
