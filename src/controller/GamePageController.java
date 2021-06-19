@@ -679,9 +679,7 @@ public class GamePageController implements Initializable {
 
 
     private boolean rightOfBlackCell(Cell[][] cell , int x , int y, Color[] color){
-        if (y == 7)
-            return false;
-        else {
+
             for (y = y +1; y < column; y++) {
                 if (cell[x][y].getColor().equals(color[1])){
                     return rightCheckOfBlackCell(cell , x , y , color);
@@ -691,7 +689,7 @@ public class GamePageController implements Initializable {
                 else
                     return false;
             }
-        }
+
         return false;
     }
 
@@ -833,374 +831,443 @@ public class GamePageController implements Initializable {
         return  false;
     }
     private boolean leftOfBlackCell(Cell [][] cell , int x , int y  , Color [] color){
-        if (y == 7)
-        return false;
-        else {
-            for (y = y -1; y >=0; y--) {
-                if (cell[x][y].getColor().equals(color[1])){
-                    return leftCheckOfBlackCell(cell , x , y , color);
+
+
+
+                for (y = y - 1; y >= 0; y--) {
+                    try {
+                        if (cell[x][y].getColor().equals(color[1])) {
+                            return leftCheckOfBlackCell(cell, x, y, color);
+                        } else if (cell[x][y].getColor().equals(color[0]))
+                            return false;
+                        else
+                            return false;
+                    }catch (Exception ignore){
+
+                    }
                 }
-                else if (cell[x][y].getColor().equals(color[0]))
-                    return false;
-                else
-                    return false;
-            }
-        }
+
+
         return false;
     }
 
     // check Up of Black btn
     private boolean UPOfBlackCell(Cell [][] cell , int x , int y , Color [] color){
-        if (x == 7)
-            return false;
-        else {
-            for (x = x -1; x >=0; x--) {
-                if (cell[x][y].getColor().equals(color[1])){
-                    return UPCheckOfBlackCell(cell , x , y , color);
+
+
+                for (x = x - 1; x >= 0; x--) {
+                    try {
+                        if (cell[x][y].getColor().equals(color[1])) {
+                            return UPCheckOfBlackCell(cell, x, y, color);
+                        } else if (cell[x][y].getColor().equals(color[0]))
+                            return false;
+                        else
+                            return false;
+                    }catch (Exception ignore){
+
+                    }
                 }
-                else if (cell[x][y].getColor().equals(color[0]))
-                    return false;
-                else
-                    return false;
-            }
-        }
+
         return false;
 
     }
 
 
     private boolean DownOfBlackCell(Cell [][] cell , int x , int y , Color [] color){
-        if (x == 7)
-            return false;
-        else {
-            for (x = x +1; x <=row; x++) {
-                if (cell[x][y].getColor().equals(color[1])){
-                    return DCheckOfBlackCell(cell , x , y , color);
-                }
-                else if (cell[x][y].getColor().equals(color[0]))
-                    return false;
-                else
-                    return false;
-            }
-        }
+
+
+               for (x = x + 1; x <= row; x++) {
+                   try {
+                       if (cell[x][y].getColor().equals(color[1])) {
+                           return DCheckOfBlackCell(cell, x, y, color);
+                       } else if (cell[x][y].getColor().equals(color[0]))
+                           return false;
+                       else
+                           return false;
+                   }catch (Exception ignore){
+
+                   }
+               }
+
+
         return false;
 
     }
     private boolean URealRUOfBlackCell(Cell [][] cell , int x , int y , Color [] color ){
-        if (x == 7 || y==7)
-            return false;
-        else {
-             y = y+1;
-            for (x = x -1; x >=0&&y<=column; x-- , y++) {
 
+
+            y = y + 1;
+            for (x = x - 1; x >= 0 && y <= column; x--, y++) {
+
+                try {
                     if (cell[x][y].getColor().equals(color[1])) {
-                        return URealRUCheckOfBlackCell(cell, x, y , color);
+                        return URealRUCheckOfBlackCell(cell, x, y, color);
                     } else if (cell[x][y].getColor().equals(color[0]))
                         return false;
                     else {
                         return false;
                     }
+                }catch (Exception ignore){
+
+                }
 
             }
-        }
+
         return false;
 
     }
 
     private boolean RealRUOfBlackCell(Cell [][] cell , int x , int y , Color [] color){
-        if (x == 7 || y==7)
-            return false;
-        else {
-            y = y-1;
-            for (x = x -1; x >=0&&y>=0; x-- , y--) {
 
 
+            y = y - 1;
+            for (x = x - 1; x >= 0 && y >= 0; x--, y--) {
 
-                if (cell[x][y].getColor().equals(color[1])) {
-                    return RealRUCheckOfBlackCell(cell, x, y , color);
-                } else if (cell[x][y].getColor().equals(color[0]))
-                    return false;
-                else {
-                    return false;
+                try {
+                    if (cell[x][y].getColor().equals(color[1])) {
+                        return RealRUCheckOfBlackCell(cell, x, y, color);
+                    } else if (cell[x][y].getColor().equals(color[0]))
+                        return false;
+                    else {
+                        return false;
+                    }
+                }catch (Exception ignore){
+
                 }
 
             }
-        }
+
         return false;
 
     }
 
     private boolean RealRDOfBlackCell(Cell [][] cell , int x , int y , Color [] color){
-        if (x == 7 || y==7)
-            return false;
-        else {
-            y = y+1;
-            for (x = x +1; x <=row&&y<=column; x++ , y++) {
 
 
+            y = y + 1;
+            for (x = x + 1; x <= row && y <= column; x++, y++) {
 
-                if (cell[x][y].getColor().equals(color[1])) {
-                    return RealRDCheckOfBlackCell(cell, x, y ,color);
-                } else if (cell[x][y].getColor().equals(color[0]))
-                    return false;
-                else {
-                    return false;
+                try {
+                    if (cell[x][y].getColor().equals(color[1])) {
+                        return RealRDCheckOfBlackCell(cell, x, y, color);
+                    } else if (cell[x][y].getColor().equals(color[0]))
+                        return false;
+                    else {
+                        return false;
+                    }
+                }catch (Exception ignore){
+
                 }
 
             }
-        }
+
         return false;
 
     }
 
     private boolean URealRDOfBlackCell(Cell [][] cell , int x , int y , Color[] color){
-        if (x == 7 || y==7)
-            return false;
-        else {
-            y = y-1;
-            for (x = x +1; x <row&&y>=0; x++ , y--) {
 
 
 
-                if (cell[x][y].getColor().equals(color[1])) {
-                    return URealRDCheckOfBlackCell(cell, x, y , color);
-                } else if (cell[x][y].getColor().equals(color[0]))
-                    return false;
-                else {
-                    return false;
+            y = y - 1;
+            for (x = x + 1; x <= row && y >= 0; x++, y--) {
+
+
+                try {
+                    if (cell[x][y].getColor().equals(color[1])) {
+                        return URealRDCheckOfBlackCell(cell, x, y, color);
+                    } else if (cell[x][y].getColor().equals(color[0]))
+                        return false;
+                    else {
+                        return false;
+                    }
+                }catch (Exception ignore){
+
                 }
-
             }
-        }
+
         return false;
 
     }
     private boolean rightCheckOfBlackCellGR(Cell[][] cells , int x , int y , Color [] color) {
-        for (y = y + 1; y < column; y++) {
 
-            if (cells[x][y].getColor().equals(color[1]))
-                continue;
+            for (y = y + 1; y < column; y++) {
+
+                try {
+                    if (cells[x][y].getColor().equals(color[1]))
+                        continue;
 //
-            else if (cells[x][y].getColor().equals(color[0])) {
-                xEndR = x;
-                yEndR = y;
-                return true;
+                    else if (cells[x][y].getColor().equals(color[0])) {
+                        xEndR = x;
+                        yEndR = y;
+                        return true;
 
+                    }
+                }catch (Exception ignore){
+
+                }
             }
-        }
+
 
         return false;
     }
 
     private boolean leftCheckOfBlackCellGR(Cell[][] cells , int x , int y , Color [] color) {
-        for (y = y - 1; y >=0; y--) {
 
-            if (cells[x][y].getColor().equals(color[1]))
-                continue;
+            for (y = y - 1; y >= 0; y--) {
+
+                try {
+                    if (cells[x][y].getColor().equals(color[1]))
+                        continue;
 //
-            else if (cells[x][y].getColor().equals(color[0])) {
-                xEnd = x;
-                yEnd = y;
-                return true;
+                    else if (cells[x][y].getColor().equals(color[0])) {
+                        xEnd = x;
+                        yEnd = y;
+                        return true;
 
+                    }
+                }catch (Exception ignore){
+
+                }
             }
-        }
+
 
         return false;
     }
     private boolean downCheckOfBlackCellGR(Cell[][] cells , int x , int y , Color [] color) {
-        for (x =x+1 ; x<row; x++) {
 
-            if (cells[x][y].getColor().equals(color[1]))
-                continue;
+            for (x = x + 1; x <= row; x++) {
+
+                try {
+                    if (cells[x][y].getColor().equals(color[1]))
+                        continue;
 //
-            else if (cells[x][y].getColor().equals(color[0])) {
-                xEndD = x;
-                yEndD = y;
-                return true;
+                    else if (cells[x][y].getColor().equals(color[0])) {
+                        xEndD = x;
+                        yEndD = y;
+                        return true;
 
+                    }
+                }catch (Exception ignore){
+
+                }
             }
-        }
-
         return false;
     }
 
     private boolean RRUCheckOfBlackCellGR(Cell[][] cells , int x , int y , Color [] color) {
-        for (x =x-1 , y = y-1; x>=0 && y>=0; x-- , y--) {
 
-            if (cells[x][y].getColor().equals(color[1]))
-                continue;
+            for (x = x - 1, y = y - 1; x >= 0 && y >= 0; x--, y--) {
+
+                try {
+                    if (cells[x][y].getColor().equals(color[1]))
+                        continue;
 //
-            else if (cells[x][y].getColor().equals(color[0])) {
-                xEndRRU = x;
-                yEndRRU = y;
-                return true;
+                    else if (cells[x][y].getColor().equals(color[0])) {
+                        xEndRRU = x;
+                        yEndRRU = y;
+                        return true;
+
+                    }
+                }catch (Exception ignore){
+
+                }
+
 
             }
-
-
-
-        }
 
         return false;
     }
     private boolean URRUCheckOfBlackCellGR(Cell[][] cells , int x , int y , Color[] color) {
-        for (x =x-1 , y = y+1; x>=0 && y<=column; x-- , y++) {
 
-            if (cells[x][y].getColor().equals(color[1]))
-                continue;
+            for (x = x - 1, y = y + 1; x >= 0 && y <= column; x--, y++) {
+
+                try {
+                    if (cells[x][y].getColor().equals(color[1]))
+                        continue;
 //
-            else if (cells[x][y].getColor().equals(color[0])) {
-                xEndRU = x;
-                yEndRU = y;
-                return true;
+                    else if (cells[x][y].getColor().equals(color[0])) {
+                        xEndRU = x;
+                        yEndRU = y;
+                        return true;
+
+                    }
+                }catch (Exception ignore){
+
+                }
+
 
             }
 
-
-
-        }
 
         return false;
     }
 
     private boolean URRDCheckOfBlackCellGR(Cell[][] cells , int x , int y , Color [] color) {
-        for (x =x+1 , y = y-1; x<=row && y>=0; x++ , y--) {
 
-            if (cells[x][y].getColor().equals(color[1]))
-                continue;
+
+            for (x = x + 1, y = y - 1; x <= row && y >= 0; x++, y--) {
+
+                try {
+                    if (cells[x][y].getColor().equals(color[1]))
+                        continue;
 //
-            else if (cells[x][y].getColor().equals(color[0])) {
-                xEndRD = x;
-                yEndRD = y;
-                return true;
+                    else if (cells[x][y].getColor().equals(color[0])) {
+                        xEndRD = x;
+                        yEndRD = y;
+                        return true;
+
+                    }
+                }catch (Exception ignore){
+
+                }
+
 
             }
 
-
-
-        }
 
         return false;
     }
 
 
     private boolean RRDCheckOfBlackCellGR(Cell[][] cells , int x , int y , Color [] color) {
-        for (x =x+1 , y = y+1; x>=0 && y>=0; x++ , y++) {
 
-            if (cells[x][y].getColor().equals(color[1]))
-                continue;
-            else if (cells[x][y].getColor().equals(color[0])) {
-                xEndRRD = x;
-                yEndRRD = y;
-                return true;
+            for (x = x + 1, y = y + 1; x >= 0 && y >= 0; x++, y++) {
+
+                try {
+                    if (cells[x][y].getColor().equals(color[1]))
+                        continue;
+                    else if (cells[x][y].getColor().equals(color[0])) {
+                        xEndRRD = x;
+                        yEndRRD = y;
+                        return true;
+
+                    }
+                }catch (Exception ignore){
+
+                }
 
             }
-
-
-
-        }
 
         return false;
     }
 
     private boolean UpCheckOfBlackCellGR(Cell[][] cells , int x , int y ,Color [] color) {
-        for (x =x-1 ; x>=0; x--) {
 
-            if (cells[x][y].getColor().equals(color[1]))
-                continue;
-            else if (cells[x][y].getColor().equals(color[0])) {
-                xEndU = x;
-                yEndU = y;
-                return true;
+            for (x = x - 1; x >= 0; x--) {
+                try {
+                    if (cells[x][y].getColor().equals(color[1]))
+                        continue;
+                    else if (cells[x][y].getColor().equals(color[0])) {
+                        xEndU = x;
+                        yEndU = y;
+                        return true;
+
+                    }
+                }catch (Exception ignore){
+
+                }
 
             }
-
-
-
-        }
 
         return false;
     }
     private boolean rightCheckOfBlackCell(Cell[][] cells , int x , int y , Color[] color){
-        for (y = y + 1; y < column; y++){
-            if (!cells[x][y].getColor().equals(Color.GREEN)) {
-                if (cells[x][y].getColor().equals(color[1]))
-                    continue;
-                else
-                    return false;
+
+
+            for (y = y + 1; y < column; y++) {
+                try {
+                    if (!cells[x][y].getColor().equals(Color.GREEN)) {
+                        if (cells[x][y].getColor().equals(color[1]))
+                            continue;
+                        else
+                            return false;
+                    } else {
+                        xEndR = x;
+                        yEndR = y;
+                        return true;
+                    }
+                }catch (Exception ignore){
+
+                }
             }
-            else {
-                xEndR = x;
-                yEndR = y;
-                return true;
-            }
-        }
+
         return false;
     }
 
     private boolean leftCheckOfBlackCell(Cell[][] cells , int x , int y , Color[] color){
-        for (y = y-1; y >=0; y--){
-            if (!cells[x][y].getColor().equals(Color.GREEN)) {
-                if (cells[x][y].getColor().equals(color[1]))
-                    continue;
-                else
-                    return false;
+
+            for (y = y - 1; y >= 0; y--) {
+                try {
+                    if (!cells[x][y].getColor().equals(Color.GREEN)) {
+                        if (cells[x][y].getColor().equals(color[1]))
+                            continue;
+                        else
+                            return false;
+                    } else {
+                        xEnd = x;
+                        yEnd = y;
+                        return true;
+                    }
+                }catch (Exception ignore){
+
+                }
             }
-            else {
-                xEnd = x;
-                yEnd = y;
-                return true;
-            }
-        }
+
         return false;
     }
 
     // for up off black btn
     private boolean UPCheckOfBlackCell(Cell[][] cells , int x , int y  ,Color [] color){
-        for (x = x-1; x>=0 ; x--){
-            try {
-                if (!cells[x][y].getColor().equals(Color.GREEN)) {
-                    if (cells[x][y].getColor().equals(color[1]))
-                        continue;
-                    else
-                        return false;
-                } else {
-                    xEndU = x;
-                    yEndU = y;
-                    return true;
-                }
-            }catch (Exception ignore){
 
+            for (x = x - 1; x >= 0; x--) {
+                try {
+                    if (!cells[x][y].getColor().equals(Color.GREEN)) {
+                        if (cells[x][y].getColor().equals(color[1]))
+                            continue;
+                        else
+                            return false;
+                    } else {
+                        xEndU = x;
+                        yEndU = y;
+                        return true;
+                    }
+                } catch (Exception ignore) {
+
+                }
             }
-        }
+
         return false;
     }
 
     private boolean DCheckOfBlackCell(Cell[][] cells , int x , int y, Color [] color){
-        for (x = x+1; x<=row ; x++){
-            try {
-                if (!cells[x][y].getColor().equals(Color.GREEN)) {
-                    if (cells[x][y].getColor().equals(color[1]))
-                        continue;
-                    else
-                        return false;
-                } else {
-                    xEndD = x;
-                    yEndD = y;
-                    return true;
+
+
+            for (x = x + 1; x < row; x++) {
+                try {
+                    if (!cells[x][y].getColor().equals(Color.GREEN)) {
+                        if (cells[x][y].getColor().equals(color[1]))
+                            continue;
+                        else
+                            return false;
+                    } else {
+                        xEndD = x;
+                        yEndD = y;
+                        return true;
+                    }
+                } catch (Exception ignore) {
+
                 }
-            }catch (Exception ignore){
-                
             }
-        }
+
         return false;
     }
 
 
     private boolean URealRUCheckOfBlackCell(Cell[][] cells , int x , int y , Color[] color) {
-        y = y+1;
-        for (x = x - 1; x >= 0&&y<=column; x-- , y++) {
+
+            y = y + 1;
+            for (x = x - 1; x >= 0 && y < column; x--, y++) {
 
                 try {
 
@@ -1215,39 +1282,43 @@ public class GamePageController implements Initializable {
                         yEndRU = y;
                         return true;
                     }
-                }catch (Exception ignore){
+                } catch (Exception ignore) {
 
                 }
 
-        }
+            }
+
         return false;
     }
 
 
     private boolean RealRUCheckOfBlackCell(Cell[][] cells , int x , int y , Color [] color) {
-        y = y-1;
-        for (x = x - 1; x >= 0&&y>=0; x-- , y--) {
 
-           try {
-               if (!cells[x][y].getColor().equals(Color.GREEN)) {
-                   if (cells[x][y].getColor().equals(color[1]))
-                       continue;
-                   else
-                       return false;
-               } else {
-                   xEndRRU = x;
-                   yEndRRU = y;
-                   return true;
-               }
-           }catch (Exception ignore){
+            y = y - 1;
+            for (x = x - 1; x >= 0 && y >= 0; x--, y--) {
 
-           }
+                try {
+                    if (!cells[x][y].getColor().equals(Color.GREEN)) {
+                        if (cells[x][y].getColor().equals(color[1]))
+                            continue;
+                        else
+                            return false;
+                    } else {
+                        xEndRRU = x;
+                        yEndRRU = y;
+                        return true;
+                    }
+                } catch (Exception ignore) {
 
-        }
+                }
+
+            }
+
         return false;
     }
 
     private boolean RealRDCheckOfBlackCell(Cell[][] cells , int x , int y , Color [] color) {
+
         y = y+1;
         for (x = x + 1; x <=row&&y<=8; x++ , y++) {
 
