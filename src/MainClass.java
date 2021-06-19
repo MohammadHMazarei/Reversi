@@ -19,7 +19,7 @@ public class MainClass extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/StartPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/LoginPage.fxml"));
 
         loader.load();
 
@@ -31,6 +31,7 @@ public class MainClass extends Application {
 
         primaryStage.getIcons().add(icon);
         primaryStage.setTitle("Othello ~Designed by : SaraNikMehr & MohammadHMazarei~");
+        primaryStage.resizableProperty().setValue(Boolean.FALSE);
         primaryStage.show();
     }
 
