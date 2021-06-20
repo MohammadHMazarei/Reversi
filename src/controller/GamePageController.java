@@ -25,6 +25,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Cell;
+import model.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,11 +45,13 @@ public class GamePageController implements Initializable {
      static final int row = 8;
      static final int column = 8;
     static int countOfColoredBTN = 4;
-    static Turn turn = Turn.BLACK;
+public  static Turn turn = Turn.BLACK;
 
 
     static boolean endOfGame = false;
 
+    private User user1;
+   private  User user2;
 
      // images for animation :) -------------------------------------------------------------
     final Image onePicture = new Image(String.valueOf(
@@ -88,6 +91,14 @@ public class GamePageController implements Initializable {
     private Circle redW , redB;
 
     static MediaPlayer mediaPlayer;
+
+
+    private void exitGamePage(){
+
+        exit.setOnAction(event1 -> {
+            ((Stage) playGround.getScene().getWindow()).close();
+        });
+    }
 
     @FXML
     private  void plyMusicOne(ActionEvent event){
@@ -172,9 +183,13 @@ public class GamePageController implements Initializable {
         Color[] color1  = new Color[2];
         color1[0] = Color.WHITE;
         color1[1] = Color.BLACK;
-        this.pointOfWhite.setText("2");
+          exitGamePage();
 
-            if (turn.equals(Turn.WHITE)) {coloredTheGrayBTN(color1);}
+            if (turn.equals(Turn.WHITE)) {coloredTheGrayBTN(color1);
+                redB.setVisible(false);
+                redW.setVisible(true);
+                this.pointOfWhite.setText(String.valueOf(numOfButton(Color.WHITE)));
+            }
             else {
                 coloredTheGrayBTN(color);
                 redB.setVisible(true);
