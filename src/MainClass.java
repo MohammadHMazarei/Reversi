@@ -3,17 +3,38 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.UFile;
+import model.User;
+
+import java.io.IOException;
 
 public class MainClass extends Application {
 
 
     //comment !
 
+    private  static UFile uFile = new UFile();
+
+    static {
+
+        try {
+            User.users = uFile.readVector("userFile.sam");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
-    public static void main(String[] args) {
+    }
+
+
+
+
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
       launch(args);
+      uFile.writeVector(User.users , "userFile.sam");
+
     }
 
 
