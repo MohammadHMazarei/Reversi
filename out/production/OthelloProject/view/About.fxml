@@ -23,7 +23,7 @@
                               <Font name="System Bold" size="22.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField editable="false" prefHeight="31.0" prefWidth="303.0" text="Family : Nikmehr" unFocusColor="#57116f">
+                        <JFXTextField editable="false" prefHeight="31.0" prefWidth="303.0" text="Last Name : Nikmehr" unFocusColor="#57116f">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>
@@ -54,7 +54,7 @@
                               <Font name="System Bold" size="22.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField editable="false" prefHeight="31.0" prefWidth="303.0" text="Family : Mazarei" unFocusColor="#57116f">
+                        <JFXTextField editable="false" prefHeight="31.0" prefWidth="303.0" text="Last Name : Mazarei" unFocusColor="#57116f">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>

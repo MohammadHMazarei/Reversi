@@ -38,6 +38,12 @@ public class LoginPageController implements Initializable {
     private PasswordField passwordField;
 
     @FXML
+    private TextField usernameField2;
+
+    @FXML
+    private PasswordField passwordField2;
+
+    @FXML
     private Label errLBL;
 
    public  static User user1;
@@ -50,6 +56,7 @@ public class LoginPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         onActions();
+
         exitBTN.setOnAction(e -> { Platform.exit(); });
         try {
             loadRegisterPage();
@@ -61,7 +68,8 @@ public class LoginPageController implements Initializable {
     }
 
     private boolean checkField(){
-        return !this.passwordField.getText().isEmpty()&& !this.usernameField.getText().isEmpty();
+        return !this.passwordField.getText().isEmpty()&& !this.usernameField.getText().isEmpty() &&
+                !usernameField2.getText().isEmpty() && !passwordField2.getText().isEmpty();
     }
 
   private  void  setTextOfERR(String text , String color) {
@@ -79,55 +87,35 @@ public class LoginPageController implements Initializable {
   }
 
     private void onActions() {
+
+
+
         loginBTN.setOnAction(event -> {
             if (checkField()) {
+
                 User user = foundUser(this.usernameField.getText(), this.passwordField.getText());
-                if (user != null) {
+                User user3 = foundUser(this.usernameField2.getText(), this.passwordField2.getText());
+
+                if (user != null && user3 != null) {
 
                     setTextOfERR("Your login was successful!", "GREEN");
                     this.usernameField.setText("");
                     this.passwordField.setText("");
 
                     user1 = user;
+                    user2 = user3;
 
-                    cleanPage();
-
-                    if (checkField()) {
-                        user = foundUser(usernameField.getText(), passwordField.getText());
-                        if (user != null) {
-
-                            setTextOfERR("Your login was successful!", "GREEN");
-                            this.usernameField.setText("");
-                            this.passwordField.setText("");
-
-                            user2 = user;
-
-                            cleanPage();
-
-                            try {
-                                loadLoginPage();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                        } else {
-                            setTextOfERR("not found !", "RED");
-                        }
-
-                    } else {setTextOfERR("please fill all blanks", "RED");}
+                    try {
+                        loadLoginPage();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
 
                 } else {setTextOfERR("not found !", "RED");}
 
             } else {setTextOfERR("please fill all blanks", "RED");}
         });
-
-    }
-
-    private void cleanPage(){
-        usernameField.setText("");
-        passwordField.setText("");
-        errLBL.setText("");
     }
 
 

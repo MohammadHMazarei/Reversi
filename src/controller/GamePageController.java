@@ -34,7 +34,6 @@ import java.util.ResourceBundle;
 public class GamePageController implements Initializable {
 
     static int xEnd , yEnd;
-
     static int xEndR , yEndR;
     static int xEndU , yEndU;
     static int xEndD , yEndD;
@@ -42,16 +41,18 @@ public class GamePageController implements Initializable {
     static int xEndRD , yEndRD;
     static int xEndRRU , yEndRRU;
     static int xEndRRD , yEndRRD;
-     static final int row = 8;
-     static final int column = 8;
-    static int countOfColoredBTN = 4;
-public  static Turn turn = Turn.BLACK;
 
+    static final int row = 8;
+    static final int column = 8;
+
+    static int countOfColoredBTN = 4;
+
+    public  static Turn turn = Turn.BLACK;
 
     static boolean endOfGame = false;
 
-    private User user1;
-   private  User user2;
+    private User user1 = LoginPageController.user1;
+    private  User user2 = LoginPageController.user2;
 
      // images for animation :) -------------------------------------------------------------
     final Image onePicture = new Image(String.valueOf(
@@ -68,6 +69,7 @@ public  static Turn turn = Turn.BLACK;
     private final ImageView pic2 = new ImageView(twoPicture);
     private final ImageView pic3 = new ImageView(threePicture);
    // --------------------------------------------------------
+
     public static Group othello;
 
      @FXML
@@ -93,13 +95,6 @@ public  static Turn turn = Turn.BLACK;
     static MediaPlayer mediaPlayer;
 
 
-    private void exitGamePage(){
-
-        exit.setOnAction(event1 -> {
-            ((Stage) playGround.getScene().getWindow()).close();
-        });
-    }
-
     @FXML
     private  void plyMusicOne(ActionEvent event){
         Media media = new Media(
@@ -113,8 +108,10 @@ public  static Turn turn = Turn.BLACK;
         mediaPlayer.play();
 
     }
+
     @FXML
     private void ml(MouseEvent event){menuBar.setStyle("-fx-background-color: gray");}
+
     @FXML
     private void mE(MouseEvent event){menuBar.setStyle("-fx-background-color:#cccccc ");}
 
@@ -153,6 +150,7 @@ public  static Turn turn = Turn.BLACK;
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+
     }
 
     @FXML
@@ -160,11 +158,6 @@ public  static Turn turn = Turn.BLACK;
 
     static Cell[][] thisCell;
 
-    private void labelW() {
-        label.setTextAlignment(TextAlignment.CENTER);
-        label.setStyle("-fx-background-color: transparent");
-        label.setFont(Font.font("Algerian" , 80) );
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -198,6 +191,24 @@ public  static Turn turn = Turn.BLACK;
             }
 
     }
+
+
+
+    private void labelW() {
+        label.setTextAlignment(TextAlignment.CENTER);
+        label.setStyle("-fx-background-color: transparent");
+        label.setFont(Font.font("Algerian" , 80) );
+    }
+
+
+    private void exitGamePage(){
+
+        exit.setOnAction(event1 -> {
+            ((Stage) playGround.getScene().getWindow()).close();
+        });
+
+    }
+
 
     //This function make 8*8 table that contain all buttons that we call each button cell
     private void setUpButtons(){
@@ -277,22 +288,7 @@ public  static Turn turn = Turn.BLACK;
 
     }
 
-     private void setEnd(){
-
-        int count = 0;
-         for (int i = 0; i < row; i++) {
-             for (int j = 0; j <column ; j++) {
-                 if (thisCell[i][j].isBlack() || thisCell[i][j].isWhite()){
-                     ++count;
-                 }
-
-             }
-
-         }
-
-         if (count==64){
-             endOfGame = true;
-         }
+     private boolean setEnd(){
 
 
      }
@@ -411,7 +407,9 @@ public  static Turn turn = Turn.BLACK;
         result[5] = RRDOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
         result[6] = URRUOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
         result[7] = URRDOfBlackCellGRA(thisCell , cell.getxPosition() , cell.getyPosition() , color);
+
         return  result;
+
     }
 
     private  void  addUn(){
