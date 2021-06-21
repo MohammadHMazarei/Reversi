@@ -42,6 +42,8 @@ public class LoginPageController implements Initializable {
 
    public  static User user1;
 
+   public  static User user2;
+
 
 
     @Override
@@ -88,16 +90,44 @@ public class LoginPageController implements Initializable {
 
                     user1 = user;
 
-                    try {
-                        loadLoginPage();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    cleanPage();
+
+                    if (checkField()) {
+                        user = foundUser(usernameField.getText(), passwordField.getText());
+                        if (user != null) {
+
+                            setTextOfERR("Your login was successful!", "GREEN");
+                            this.usernameField.setText("");
+                            this.passwordField.setText("");
+
+                            user2 = user;
+
+                            cleanPage();
+
+                            try {
+                                loadLoginPage();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                        } else {
+                            setTextOfERR("not found !", "RED");
+                        }
+
+                    } else {setTextOfERR("please fill all blanks", "RED");}
+
+
                 } else {setTextOfERR("not found !", "RED");}
 
             } else {setTextOfERR("please fill all blanks", "RED");}
         });
 
+    }
+
+    private void cleanPage(){
+        usernameField.setText("");
+        passwordField.setText("");
+        errLBL.setText("");
     }
 
 
