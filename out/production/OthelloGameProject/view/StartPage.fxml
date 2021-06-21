@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="835.0" prefWidth="908.0" styleClass="an-s" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartPageController">
+   <children>
+      <HBox layoutX="198.0" layoutY="174.0" prefHeight="150.0" prefWidth="553.0" spacing="55.0" AnchorPane.leftAnchor="157.0" AnchorPane.rightAnchor="157.0">
+         <children>
+
+         </children>
+      </HBox>
+      <JFXButton fx:id="startBTN" layoutX="419.0" layoutY="468.0" onAction="#startBA" text="Start Game" AnchorPane.leftAnchor="419.0" AnchorPane.rightAnchor="393.0" />
+   </children>
+</AnchorPane>
