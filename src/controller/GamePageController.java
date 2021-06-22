@@ -169,6 +169,8 @@ public class GamePageController implements Initializable {
 
         tableButtons();
 
+        scoreboardOnAction();
+
        Color[] color  = new Color[2];
         color[0] = Color.BLACK;
         color[1] = Color.WHITE;
@@ -192,6 +194,36 @@ public class GamePageController implements Initializable {
 
     }
 
+
+    private void scoreboardOnAction(){
+        scoreboard.setOnAction(e -> {
+            Stage scoreboardStage = ((Stage) label.getScene().getWindow());
+
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Scoreboard.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            Image image = new Image("/images/imgbin_circle-png.png");
+            scoreboardStage.getIcons().add(image);
+            scoreboardStage.setScene(new Scene(loader.getRoot()));
+            scoreboardStage.setTitle("Othello ~Designed by : SaraNikMehr & MohammadHMazarei~");
+            scoreboardStage.resizableProperty().setValue(Boolean.FALSE);
+            scoreboardStage.show();
+            scoreboardOnAction((ScoreboardController) loader.getController());
+        });
+    }
+
+    private void scoreboardOnAction(ScoreboardController scoreboardController){
+        scoreboardController.getBackBTN().setOnAction(e ->{
+            Stage stage = ((Stage)scoreboardController.getBackBTN().getScene().getWindow());
+
+            stage.setScene(label.getScene());
+            stage.show();
+        });
+    }
 
 
     private void labelW() {

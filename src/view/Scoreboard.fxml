@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controller.PlayListPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ScoreboardController">
    <children>
       <ImageView fitHeight="667.0" fitWidth="488.0" layoutY="-2.0">
          <image>
-            <Image url="@../../../../../IdeaProjects/MediaPlayer/src/com/company/view/image/backgrand2.jpg" />
+            <Image url="@../images/backgrand2.jpg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="53.0" layoutY="35.0" prefHeight="591.0" prefWidth="382.0" style="-fx-background-color: #212121; -fx-background-radius: 30;">
@@ -39,7 +39,7 @@
                   <AnchorPane layoutX="-2.0" layoutY="32.0" prefHeight="4.0" prefWidth="51.0" style="-fx-background-color: #ff3d00;" />
                </children>
             </Group>
-            <Button layoutX="131.0" layoutY="541.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #76ff03; -fx-background-radius: 90;" text="Back" />
+            <Button fx:id="backBTN" layoutX="131.0" layoutY="541.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #76ff03; -fx-background-radius: 90;" text="Back" />
          </children>
       </AnchorPane>
    </children>
