@@ -5,3 +5,16 @@
 .an-s{
     -fx-background-image: url('../images/682322.jpg')
 }
+
+.button{
+    -fx-background-color: green;
+    -fx-border-color: black;
+}
+.im {
+
+    -fx-shape: "M150 0 L75 200 L225 200 Z";
+
+}
+.an-a{
+     -fx-background-image: url('../images/sar11.png')
+ }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameGuideController">
+   <children>
+      <ImageView fitHeight="515.0" fitWidth="603.0" layoutX="-4.0" layoutY="-2.0">
+         <image>
+            <Image url="@../images/backgrand2.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="60.0" layoutY="17.0" prefHeight="473.0" prefWidth="476.0" style="-fx-background-color: #212121; -fx-background-radius: 30;">
+         <children>
+            <Group layoutX="184.0" layoutY="21.0">
+               <children>
+                  <Label layoutX="-26.0" layoutY="3.0" text="Game Guide" textFill="#fcfcfc">
+                     <font>
+                        <Font name="Tahoma Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="8.0" layoutY="35.0" prefHeight="4.0" prefWidth="90.0" style="-fx-background-color: #ff3d00;" />
+               </children>
+            </Group>
+            <ScrollPane layoutX="1.0" layoutY="76.0" prefHeight="331.0" prefWidth="474.0" style="-fx-background-color: #212121; -fx-border-color: red;">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="558.0" prefWidth="474.0" style="-fx-background-color: #212121;">
+                     <children>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~ Reversi or Othello takes place between two players, black and white, on an 8x8 board of 64 squares. There are 64 discs coloured black on one side and white on the other." wrappingWidth="457.3367118835449" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~ The board is set up initially with two black discs (i.e. a disc with black side uppermost) placed on squares e4 and d5 and two white discs on d4 and e5." wrappingWidth="457.3367118835449" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~ Black always plays first with players then taking alternate turns." wrappingWidth="457.3367118835449" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~ At each turn a player must place a disc with their colour face up on one of the empty squares of the board, adjacent to an opponent's disc such that one or more straight lines (horizontal, vertical or diagonal) are formed from the newly placed disc, through one or more of the opponent's discs and up to other discs of their own colour already on the board. All the intervening discs of the opponent's colour are flipped to the colour of the newly laid disc." wrappingWidth="457.3367118835449" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~ Discs may be flipped from one colour to the other but once played are not moved from one square to another or removed from the board." wrappingWidth="457.3367118835449" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~ Players may not pass unless there is no valid move available to them in which case they must pass." wrappingWidth="457.3367118835449" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~ Play continues until neither player is able to move, usually when all 64 squares have been played." wrappingWidth="457.3367118835449" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
