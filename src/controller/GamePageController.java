@@ -92,6 +92,12 @@ public class GamePageController implements Initializable {
     @FXML
     private Circle redW , redB;
 
+    @FXML
+    private Label whiteLBL;
+
+    @FXML
+    private Label blackLBL;
+
     static MediaPlayer mediaPlayer;
 
 
