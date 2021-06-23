@@ -444,7 +444,7 @@ public class GamePageController implements Initializable {
             mvm(color);
         }
 
-        int count = 0;
+
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -452,7 +452,7 @@ public class GamePageController implements Initializable {
                     onActionForGrayBTN(thisCell[i][j] , color);
 
 
-                    count++;
+                    
                 }
             }
         }
@@ -467,25 +467,6 @@ public class GamePageController implements Initializable {
         }else if (turn.equals(Turn.BLACK)){
             redW.setVisible(false);
             redB.setVisible(true);
-        }
-
-
-        if (count == 0){
-            if (turn.equals(Turn.BLACK)) {
-                turn = Turn.WHITE;
-                color[0] = Color.WHITE;
-                color[1] = Color.BLACK;
-                mvm(color);
-                coloredTheGrayBTN(color);
-
-            } else if (turn.equals(Turn.WHITE)) {
-
-                turn = Turn.BLACK;
-                color[0] = Color.BLACK;
-                color[1] = Color.WHITE;
-                moveInAllButtons(color);
-                coloredTheGrayBTN(color);
-            }
         }
 
 
