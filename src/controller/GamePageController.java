@@ -254,6 +254,7 @@ public class GamePageController implements Initializable {
             scoreboardStage.show();
             scoreboardOnAction((ScoreboardController) loader.getController());
         });
+
     }
 
     private void scoreboardOnAction(ScoreboardController scoreboardController){
