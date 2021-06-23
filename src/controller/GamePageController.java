@@ -167,10 +167,18 @@ public class GamePageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        whiteLBL.setText(user2.getUserName() + " :");
+        blackLBL.setText(user1.getUserName() + " :");
+
        label.setText("REVERSI");
+
         setUpButtons();
+
         labelW();
+
         myAnimation();
+
         hbX.getChildren().addAll(othello);
 
         tableButtons();
