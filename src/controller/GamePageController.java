@@ -73,7 +73,7 @@ public class GamePageController implements Initializable {
     public static Group othello;
 
      @FXML
-     private Label pointOfWhite , pointOfBlack, label;;
+     private Label pointOfWhite , pointOfBlack, label;
 
     @FXML
     private VBox playGround;
@@ -171,7 +171,9 @@ public class GamePageController implements Initializable {
 
         scoreboardOnAction();
 
-       Color[] color  = new Color[2];
+        gameGuideOnAction();
+
+        Color[] color  = new Color[2];
         color[0] = Color.BLACK;
         color[1] = Color.WHITE;
 
@@ -184,14 +186,38 @@ public class GamePageController implements Initializable {
                 redB.setVisible(false);
                 redW.setVisible(true);
                 this.pointOfWhite.setText(String.valueOf(numOfButton(Color.WHITE)));
+                user2.setPoint(numOfButton(Color.WHITE));
             }
             else {
                 coloredTheGrayBTN(color);
                 redB.setVisible(true);
                 redW.setVisible(false);
                 this.pointOfBlack.setText(String.valueOf(numOfButton(Color.BLACK)));
+                user1.setPoint(numOfButton(Color.BLACK));
             }
 
+    }
+
+
+    private void gameGuideOnAction(){
+        gameGuide.setOnAction(e ->{
+            FXMLLoader louder = new FXMLLoader(this.getClass().getResource("../view/GameGuide.fxml"));
+
+            try {
+                louder.load();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+
+            Scene scene = new Scene(louder.getRoot());
+            Stage stage = new Stage();
+            Image icon  = new Image("images/imgbin_circle-png.png");
+            stage.getIcons().add(icon);
+            stage.setTitle("Othello ~Designed by : SaraNikMehr & MohammadHMazarei~");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        });
     }
 
 
@@ -418,7 +444,9 @@ public class GamePageController implements Initializable {
         }
 
         pointOfWhite.setText(String.valueOf(numOfButton(Color.WHITE)));
+        user2.setPoint(numOfButton(Color.WHITE));
         pointOfBlack.setText(String.valueOf(numOfButton(Color.BLACK)));
+        user1.setPoint(numOfButton(Color.BLACK));
         if (turn.equals(Turn.WHITE)){
             redW.setVisible(true);
             redB.setVisible(false);
